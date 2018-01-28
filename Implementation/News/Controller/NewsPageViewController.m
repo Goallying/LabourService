@@ -66,6 +66,7 @@ SDCycleScrollViewDelegate>
         }else if (type == Pull_More){
             [_news addObjectsFromArray:news];
         }
+        self.showEmptyView = _news.count == 0;
         [_tableView reloadData];
     } failure:^(NSString *msg, NSInteger code) {
         [CToast showWithText:msg];

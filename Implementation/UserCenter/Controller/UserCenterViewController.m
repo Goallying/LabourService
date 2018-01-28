@@ -10,6 +10,7 @@
 #import "EditProfileViewController.h"
 #import "UserCenterViewModel.h"
 #import "UserCenterSectionHeader.h"
+#import "MessageViewController.h"
 @interface UserCenterViewController()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)UIButton * headerBtn ;
 @property (nonatomic ,strong)UILabel * nameLabel;
@@ -18,8 +19,11 @@
 @property (nonatomic ,strong)UIView * sectionHeader ;
 @property (nonatomic ,strong)NSArray * titles ;
 @property (nonatomic ,strong)NSArray * images ;
-@property (nonatomic ,assign)NSInteger  balace ;
-@property (nonatomic ,assign)NSInteger  thumbs ;
+@property (nonatomic ,assign)NSInteger balace ;
+@property (nonatomic ,assign)NSInteger thumbs ;
+@property (nonatomic ,strong)UIButton *mesBtn ;
+@property (nonatomic ,strong)UILabel * mesCountLabel ;
+
 @end
 @implementation UserCenterViewController
 
@@ -33,6 +37,10 @@
     [super viewDidLoad];
     
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.mesBtn];
+    _mesBtn.maker.leftTo(self.view,16).widthEqualTo(24).heightEqualTo(24).topTo(self.view , 32);
+
+    
     [self userDataReq];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadUserInfo) name:NOTICE_LOGIN_SUCCESS object:nil];
@@ -45,7 +53,6 @@
 }
 - (void)userDataReq {
     
-    NSLog(@"====%@", User_Info.token);
     [UserCenterViewModel getUserInfo:User_Info.token success:^(NSString *msg, NSString *balance, BOOL ifPerfect, NSInteger thumbs) {
         _balace = [balance integerValue] ;
         _thumbs = thumbs ;
@@ -57,6 +64,11 @@
 }
 - (void)headerClick {
    
+}
+- (void)mesClick {
+    MessageViewController * mes = [MessageViewController new];
+    [self.navigationController pushViewController:mes animated:YES];
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 65 ;
@@ -121,7 +133,26 @@
     }
     return _titles ;
 }
+- (UIButton*)mesBtn {
+    if (!_mesBtn) {
+        _mesBtn = [UIButton new];
+        [_mesBtn addTarget:self action:@selector(mesClick) forControlEvents:UIControlEventTouchUpInside];
+        [_mesBtn setBackgroundImage:[UIImage imageNamed:@"nav_msg_icon"] forState:UIControlStateNormal];
+        _mesCountLabel = [UILabel new];
+        _mesCountLabel.layer.cornerRadius = 8 ;
+        _mesCountLabel.clipsToBounds = YES;
+        _mesCountLabel.textAlignment = NSTextAlignmentCenter;
+        _mesCountLabel.font = Font_12 ;
+        _mesCountLabel.textColor = [UIColor whiteColor];
+        _mesCountLabel.backgroundColor = UIColorHex(0xff3333);
+        _mesCountLabel.text = @" 999 ";
+        [_mesBtn addSubview:_mesCountLabel];
+        _mesCountLabel.maker.leftTo(_mesBtn, 12).topTo(_mesBtn, -8).widthGraterThan(16).heightEqualTo(16);
+    }
+    return _mesBtn ;
+}
 - (UIView *)tableViewHeaderView{
+    
     if (!_tableViewHeaderView) {
         _tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 200)];
         _tableViewHeaderView.backgroundColor = UIColor_0x007ed3 ;

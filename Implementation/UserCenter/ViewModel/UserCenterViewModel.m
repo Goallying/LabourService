@@ -9,7 +9,18 @@
 #import "UserCenterViewModel.h"
 #import "WorkKind.h"
 @implementation UserCenterViewModel
-
++ (void)getUserMessage:(NSString *)token page:(NSInteger)page status:(NSInteger)status success:(void (^)(NSString *, NSArray *))success failure:(void (^)(NSString *, NSInteger))failure{
+    
+    NSDictionary * dic = @{@"page":[NSString stringWithFormat:@"%ld",page],
+                           @"limit":@"20",
+                           @"messageStatus":[NSString stringWithFormat:@"%ld",status]
+                           };
+    [ReqManager POST_URLString:@"SysMessage/personMessage" headerParamter:token parameters:dic showIndicatior:YES success:^(id obj) {
+        NSLog(@"=== %@",obj);
+    } failure:^(NSError *error) {
+        failure(error.domain ,error.code);
+    }] ;
+}
 + (void)updateUserInfo:(NSString *)token
                 header:(UIImage *)header
                   name:(NSString *)name
@@ -40,11 +51,6 @@
                 failure(error.domain,error.code);
 
     }];
-//    [ReqManager uploadImagesURL:@"MemberUser/perfectInformation" token:token images:@[header] params:dic showIndicatior:YES success:^(id obj) {
-//        success(obj[@"message"],obj[@"result"]);
-//    } failure:^(NSError *error) {
-//        failure(error.domain,error.code);
-//    }];
 }
 
 + (void)getCityList:(NSString *)code success:(void (^)(NSString *, NSArray *))success failure:(void (^)(NSString *, NSInteger))failure{
@@ -64,6 +70,7 @@
         failure(error.domain,error.code);
     }];
 }
+
 + (void)loginOut:(NSString *)token success:(void (^)(NSString *))success failure:(void (^)(NSString *, NSInteger))failure{
     NSDictionary * dic = @{@"token":token};
     

@@ -57,7 +57,6 @@
         [tags addObject:dic[@"realname"]];
     }
     _tagView.tags = tags ;
-//    _tagView.heightConstraint.constant = _searchModel.searchTagsHeight ;
     _tagView.heightConstraint.constant = _tagView.searchTagsHeight ;
     _locLabel.text = searchModel.address ;
 }

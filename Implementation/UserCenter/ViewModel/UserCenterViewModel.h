@@ -10,6 +10,11 @@
 #import "CityModel.h"
 
 @interface UserCenterViewModel : BaseViewModel
++ (void)getUserMessage:(NSString *)token
+                  page:(NSInteger)page
+                status:(NSInteger)status
+               success:(void(^)(NSString * msg ,NSArray * message))success
+               failure:(void(^)(NSString * msg ,NSInteger code))failure;
 
 + (void)updateUserInfo:(NSString *)token
                 header:(UIImage *)header

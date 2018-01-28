@@ -19,7 +19,6 @@ UITableViewDelegate,
 UITableViewDataSource ,
 UITextFieldDelegate
 >
-@property (nonatomic ,strong)UILabel *mesCountLabel ;
 @property (nonatomic,strong)UIView * navigationView ;
 @property (nonatomic,strong)UIButton * addressBtn;
 
@@ -81,6 +80,7 @@ UITextFieldDelegate
         }else{
             [_people addObjectsFromArray:peoples];
         }
+        self.showEmptyView = _people.count == 0 ;
         [_tableView reloadData];
     } failure:^(NSString *msg, NSInteger code) {
         [CToast showWithText:msg];
@@ -240,21 +240,6 @@ UITextFieldDelegate
         [_searchTF addSubview:searchImageV];
         searchImageV.maker.centerYTo(_searchTF, 0).leftTo(_searchTF,10).widthEqualTo(12).heightEqualTo(12);
         
-        UIButton * b = [UIButton new];
-        [b setBackgroundImage:[UIImage imageNamed:@"nav_msg_icon"] forState:UIControlStateNormal];
-        [_navigationView addSubview:b];
-        b.maker.rightTo(_navigationView, 16).centerYTo(_searchTF,0).widthEqualTo(24).heightEqualTo(24);
-        
-        _mesCountLabel = [UILabel new];
-        _mesCountLabel.layer.cornerRadius = 8 ;
-        _mesCountLabel.clipsToBounds = YES;
-        _mesCountLabel.textAlignment = NSTextAlignmentCenter;
-        _mesCountLabel.font = Font_12 ;
-        _mesCountLabel.textColor = [UIColor whiteColor];
-        _mesCountLabel.backgroundColor = UIColorHex(0xff3333);
-        _mesCountLabel.text = @" 999 ";
-        [b addSubview:_mesCountLabel];
-        _mesCountLabel.maker.leftTo(b, 12).topTo(b, -8).widthGraterThan(16).heightEqualTo(16);
         
     }
     return _navigationView;

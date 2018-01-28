@@ -27,9 +27,7 @@
 - (void)reloadData ;
 @end
 
-@interface CSBaselineButton : UIButton
-@property (nonatomic,assign) CGFloat buttonlineWidth;
-@end
+
 
 
 

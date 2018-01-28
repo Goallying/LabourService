@@ -7,7 +7,7 @@
 //
 
 #import "CSPageController.h"
-
+#import "CSBaselineButton.h"
 @interface CSPageController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 
 @property (nonatomic ,strong)UIPageViewController * pageController ;
@@ -180,18 +180,3 @@
 }
 @end
 
-@implementation CSBaselineButton
--(void)drawRect:(CGRect)rect
-{
-    if (self.selected) {
-        CGFloat lineWidth = 2.0;
-        CGColorRef color = UIColorHex(0x007ed3).CGColor;
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGContextSetStrokeColorWithColor(ctx, color);
-        CGContextSetLineWidth(ctx, lineWidth);
-        CGContextMoveToPoint(ctx, 10, self.frame.size.height-lineWidth);
-        CGContextAddLineToPoint(ctx, self.frame.size.width - 10, self.frame.size.height-lineWidth);
-        CGContextStrokePath(ctx);
-    }
-}
-@end
