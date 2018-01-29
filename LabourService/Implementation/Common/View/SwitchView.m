@@ -11,11 +11,18 @@
 
 @interface SwitchView()
 
+@property (nonatomic ,assign)NSInteger lastIdx ;
 @property (nonatomic ,strong)NSMutableArray * btns ;
 @end
 
 @implementation SwitchView
 
+- (instancetype)init{
+    if (self = [super init]) {
+        _lastIdx = 1 ;
+    }
+    return self ;
+}
 - (void)layoutSubviews{
     
     CGFloat w = self.width / _source.count ;
@@ -52,19 +59,20 @@
 - (void)click:(CSBaselineButton *) b {
     
     
-    static NSInteger lastIdx = 1 ;
-    CSBaselineButton * last = self.btns[lastIdx - 1];
-    if (lastIdx == b.tag) {
+    CSBaselineButton * last = self.btns[_lastIdx - 1];
+    if (_lastIdx == b.tag) {
         return;
     }
     last.selected = NO ;
     
     b.selected = YES ;
-    lastIdx = b.tag ;
+    _lastIdx = b.tag ;
     
     if (self.clicked) {
         self.clicked(b.tag);
     }
 }
-
+- (void)dealloc{
+    
+}
 @end

@@ -116,5 +116,8 @@
     }
     return _tableView;
 }
+- (void)dealloc{
+    
+}
 
 @end
