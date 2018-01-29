@@ -11,16 +11,15 @@
 #import "SDCycleScrollView.h"
 #import "AppointmentViewModel.h"
 #import "AppointmentListCell.h"
-#import "IQUIView+IQKeyboardToolbar.h"
 #import "SelectKindsViewController.h"
 @interface AppointmentViewController ()<
 SDCycleScrollViewDelegate,
 UITableViewDelegate,
-UITableViewDataSource,
-UITextFieldDelegate
+UITableViewDataSource
 >
  @property (nonatomic,strong)UIView * navigationView ;
 @property (nonatomic,strong)UIButton * addressBtn;
+@property (nonatomic,strong) UIButton * delete ;
 
 @property (nonatomic ,strong)UITableView * tableView ;
 @property (nonatomic ,strong)SDCycleScrollView *sdCycleView ;
@@ -104,60 +103,27 @@ UITextFieldDelegate
     }
     [self dataRequest:Pull_More page:_page kind:kind];
 }
-- (void)doneClick{
-    if (_searchTF.text.length > 0) {
-        return;
-    }
-    _beFirst = YES ;
-    _searchKind = nil ;
-    [self dataRequest:Pull_Refresh page:1 kind:@""];
-}
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (textField.text.length == 1) {
-        
-        SelectKindsViewController * kindVC = [SelectKindsViewController new];
-        kindVC.maxSelectCount = 1 ;
-        [kindVC setFinishSelect:^(NSArray *kinds) {
-            
-            _searchKind = kinds.lastObject ;
-            
-            _allowEditing = YES ;
-            textField.text = _searchKind.realName;
-            [self dataRequest:Pull_Refresh page:1 kind:[NSString stringWithFormat:@"%ld",_searchKind.ID]];
-            
-        }];
-        [self.navigationController pushViewController:kindVC animated:YES];
-    }
-    return YES ;
-}
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+- (void)locClick {
     
-    if (textField.text.length == 0 && _beFirst == YES) {
-        _beFirst = NO ;
-        _allowEditing = NO ;
-    }else{
-        _allowEditing = YES ;
-    }
-    return YES ;
 }
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-    if (_allowEditing == YES) {
-        return ;
-    }
+- (void)TFClick {
     SelectKindsViewController * kindVC = [SelectKindsViewController new];
     kindVC.maxSelectCount = 1 ;
     [kindVC setFinishSelect:^(NSArray *kinds) {
-        
         _searchKind = kinds.lastObject ;
-        
-        _allowEditing = YES ;
-        textField.text = _searchKind.realName;
+        _searchTF.text = _searchKind.realName;
+        _delete.hidden = NO ;
         [self dataRequest:Pull_Refresh page:1 kind:[NSString stringWithFormat:@"%ld",_searchKind.ID]];
-        
     }];
     [self.navigationController pushViewController:kindVC animated:YES];
 }
+- (void)deleteText {
+    
+    _delete.hidden = YES ;
+    _searchTF.text = nil ;
+    [self dataRequest:Pull_Refresh page:_page kind:@""];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return _projects.count;
@@ -229,6 +195,8 @@ UITextFieldDelegate
         
         UIButton * locBtn = [[UIButton alloc]initWithFrame:CGRectMake(16, 26, 13, 16)];
         [locBtn setBackgroundImage:[UIImage imageNamed:@"nav_location_icon"] forState:UIControlStateNormal];
+        [locBtn addTarget:self action:@selector(locClick) forControlEvents:UIControlEventTouchUpInside];
+
         [_navigationView addSubview:locBtn];
         
         _addressBtn = [UIButton new];
@@ -236,6 +204,7 @@ UITextFieldDelegate
         [_addressBtn setTitle:User_Info.city forState:UIControlStateNormal];
         [_addressBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_addressBtn setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+        [_addressBtn addTarget:self action:@selector(locClick) forControlEvents:UIControlEventTouchUpInside];
         [_navigationView addSubview:_addressBtn];
         _addressBtn.maker.centerXTo(locBtn, 0).widthRange(30, 44).heightEqualTo(20).topTo(locBtn, 0);
         
@@ -246,10 +215,21 @@ UITextFieldDelegate
         _searchTF.placeholder = @"选择您想要的人才";
         _searchTF.placeholderFont = Font_12 ;
         _searchTF.layer.cornerRadius = 15 ;
-        [_searchTF.keyboardToolbar.doneBarButton setTarget:self action:@selector(doneClick)];
         _searchTF.delegate = self ;
         [_navigationView addSubview:_searchTF];
         _searchTF.maker.centerYTo(locBtn, 8).centerXTo(_navigationView, 0). heightEqualTo(30).widthEqualTo(kScreenW - 88 - 10);
+        
+        UIButton * clearBtn = [UIButton new];
+        [clearBtn addTarget:self action:@selector(TFClick) forControlEvents:UIControlEventTouchUpInside];
+        [_searchTF addSubview:clearBtn];
+        clearBtn.maker.sidesMarginZero() ;
+        
+        _delete = [UIButton new];
+        [_delete setBackgroundImage:[UIImage imageNamed:@"round_close_gray"] forState:UIControlStateNormal];
+        [_delete addTarget:self action:@selector(deleteText) forControlEvents:UIControlEventTouchUpInside];
+        _delete.hidden = YES ;
+        [clearBtn addSubview:_delete];
+        _delete.maker.centerYTo(clearBtn, 0).widthEqualTo(20).heightEqualTo(20).rightTo(clearBtn, 8);
         
         UIImageView * searchImageV = [[UIImageView alloc]init];
         searchImageV.image = [UIImage imageNamed:@"nav_search_btn_black"];

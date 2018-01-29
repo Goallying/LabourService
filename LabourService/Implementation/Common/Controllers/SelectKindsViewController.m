@@ -42,12 +42,6 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateUserInfo) name:NOTICE_UPDATE_USER_INFO object:nil];
    
 }
--(void)backforward{
-    if (self.back) {
-        self.back() ;
-    }
-    [super backforward];
-}
 - (void)updateUserInfo{
     [_locButton setTitle:User_Info.city forState:UIControlStateNormal];
 }

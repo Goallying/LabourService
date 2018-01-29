@@ -58,9 +58,9 @@ UINavigationControllerDelegate>
                                 success:^(NSString *msg, id obj) {
         [AppManager saveLocalUserInfo:obj];
         [CToast showWithText:msg];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *msg, NSInteger code) {
         [CToast showWithText:msg];
-
     }];
     
 }
@@ -302,8 +302,13 @@ UINavigationControllerDelegate>
     clearBtn.maker.centerYTo(kindL, 0).leftTo(kindL, 0).rightTo(_backView, 16).heightEqualTo(50);
     
     _tagV = [[TagView alloc]init];
+    NSMutableArray * tags = [NSMutableArray array];
+    for (WorkKind * k in User_Info.workList) {
+        [tags addObject:k.realName];
+    }
+    _tagV.tags = tags ;
     [_backView addSubview:_tagV];
-    _tagV.maker.topTo(kindL, 15).leftTo(_backView, 16).rightTo(_backView, 16).heightEqualTo(1);
+    _tagV.maker.topTo(kindL, 15).leftTo(_backView, 16).rightTo(_backView, 16).heightEqualTo(_tagV.pressTagsHeight);
     
     UIView * s5 = [UIView new];
     s5.backgroundColor = UIColor_d7d7d7 ;
@@ -326,7 +331,9 @@ UINavigationControllerDelegate>
     [_backView addSubview:s6];
     s6.maker.topTo(_phoneTF , 0).leftTo(_backView, 0).rightTo(_backView, 0).heightEqualTo(1);
     
-    _backView.maker.leftTo(self.view, 0).topTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50 * 7 + 10 + 4 + 5 + 10);
+//    _backView.maker.leftTo(self.view, 0).topTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50 * 7 + 10 + 4 + 5 + 10);
+        _backView.maker.leftTo(self.view, 0).topTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50 * 7 + 10 + 5 + 5 + 10 + _tagV.pressTagsHeight);
+
     
     UIButton * sureBtn = [UIButton new];
     sureBtn.layer.cornerRadius = 5;
