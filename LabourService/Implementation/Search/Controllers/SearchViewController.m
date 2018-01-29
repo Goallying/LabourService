@@ -31,6 +31,7 @@ UITextFieldDelegate
 
 @property (nonatomic ,strong)UITextField * searchTF ;
 @property (nonatomic ,assign)BOOL allowEditing ;
+@property (nonatomic ,assign)BOOL beFirst ;
 @property (nonatomic ,strong)WorkKind * searchKind ;
 @end
 
@@ -48,6 +49,7 @@ UITextFieldDelegate
     [self.view addSubview:self.navigationView];
     
     _page = 1 ;
+    _beFirst = YES ;
     [self banner_data_request];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(banner_data_request) name:NOTICE_UPDATE_USER_INFO object:nil];
 }
@@ -59,6 +61,7 @@ UITextFieldDelegate
 }
 - (void)bannerRequest {
     
+
     [SearchViewModel getSearchBanner:User_Info.province success:^(NSString *msg, NSArray *banners, NSArray *imageURLs) {
         _banners = [banners mutableCopy];
         _sdCycleView.imageURLStringsGroup = imageURLs;
@@ -68,6 +71,7 @@ UITextFieldDelegate
 }
 - (void)dataRequest:(PullType)pullType page:(NSInteger)page kind:(NSString *)kind{
     
+ 
     [SearchViewModel getSearchList:_page parentid:User_Info.adcode parameter:kind success:^(NSString *msg, NSArray *peoples) {
         if (pullType == Pull_Refresh) {
             _people = [peoples mutableCopy];
@@ -103,11 +107,31 @@ UITextFieldDelegate
         return;
     }
     _searchKind = nil ;
+    _beFirst = YES;
     [self dataRequest:Pull_Refresh page:1 kind:@""];
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField.text.length == 1) {
+        
+        SelectKindsViewController * kindVC = [SelectKindsViewController new];
+        kindVC.maxSelectCount = 1 ;
+        [kindVC setFinishSelect:^(NSArray *kinds) {
+            
+            _searchKind = kinds.lastObject ;
+            
+            _allowEditing = YES ;
+            textField.text = _searchKind.realName;
+            [self dataRequest:Pull_Refresh page:1 kind:[NSString stringWithFormat:@"%ld",_searchKind.ID]];
+            
+        }];
+        [self.navigationController pushViewController:kindVC animated:YES];
+    }
+    return YES ;
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    if (textField.text.length == 0) {
+    if (textField.text.length == 0 && _beFirst == YES) {
+        _beFirst = NO;
         _allowEditing = NO ;
     }else{
         _allowEditing = YES ;

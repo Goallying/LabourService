@@ -19,11 +19,14 @@
 
 @implementation NewsViewController
 
-- (NSArray<UIBarButtonItem *> *)leftBarButtonItems{
-    UIButton * b = [UIButton new];
-    [b setTitle:@"首页" forState:UIControlStateNormal];
-    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc]initWithCustomView:b];
-    return @[leftItem];
+//- (NSArray<UIBarButtonItem *> *)leftBarButtonItems{
+//    UIButton * b = [UIButton new];
+//    [b setTitle:@"首页" forState:UIControlStateNormal];
+//    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc]initWithCustomView:b];
+//    return @[leftItem];
+//}
+- (NSString *)title{
+    return @"首页";
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

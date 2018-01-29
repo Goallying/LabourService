@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 
 @interface SelectKindsViewController : BaseViewController
+@property (nonatomic ,copy)void(^back)(void) ;
 @property (nonatomic ,copy)void(^finishSelect)(NSArray * kinds) ;
 @property (nonatomic ,assign)NSInteger maxSelectCount ;
 @end

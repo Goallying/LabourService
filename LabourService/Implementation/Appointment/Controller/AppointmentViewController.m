@@ -32,6 +32,8 @@ UITextFieldDelegate
 @property (nonatomic ,strong)UITextField * searchTF ;
 @property (nonatomic ,assign)BOOL allowEditing ;
 @property (nonatomic ,strong)WorkKind * searchKind ;
+@property (nonatomic ,assign)BOOL beFirst ;
+
 @end
 
 @implementation AppointmentViewController
@@ -47,6 +49,7 @@ UITextFieldDelegate
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navigationView];
     
+    _beFirst = YES ;
     _page = 1 ;
     [self banner_data_request];
     
@@ -105,12 +108,32 @@ UITextFieldDelegate
     if (_searchTF.text.length > 0) {
         return;
     }
+    _beFirst = YES ;
     _searchKind = nil ;
     [self dataRequest:Pull_Refresh page:1 kind:@""];
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField.text.length == 1) {
+        
+        SelectKindsViewController * kindVC = [SelectKindsViewController new];
+        kindVC.maxSelectCount = 1 ;
+        [kindVC setFinishSelect:^(NSArray *kinds) {
+            
+            _searchKind = kinds.lastObject ;
+            
+            _allowEditing = YES ;
+            textField.text = _searchKind.realName;
+            [self dataRequest:Pull_Refresh page:1 kind:[NSString stringWithFormat:@"%ld",_searchKind.ID]];
+            
+        }];
+        [self.navigationController pushViewController:kindVC animated:YES];
+    }
+    return YES ;
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    if (textField.text.length == 0) {
+    if (textField.text.length == 0 && _beFirst == YES) {
+        _beFirst = NO ;
         _allowEditing = NO ;
     }else{
         _allowEditing = YES ;
