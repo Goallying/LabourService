@@ -9,9 +9,17 @@
 #import "BaseViewModel.h"
 #import "WorkKind.h"
 @interface PressViewModel : BaseViewModel
-
-+ (void)pressToken:(NSString *)token
-              type:(NSInteger)type
++ (void)pressProjectToken:(NSString *)token
+                     name:(NSString *)name
+                      tel:(NSString *)tel
+                    title:(NSString *)title
+                   intro:(NSString *)intro
+                    addr:(NSString *)addr
+                  addrID:(NSString *)addrID
+                   kinds:(NSArray *)kinds
+                 success:(void(^)(NSString * msg))success
+                 failure:(void(^)(NSString * msg ,NSInteger code))failure ;
++ (void)pressPersonToken:(NSString *)token
              intro:(NSString *)intro
               addr:(NSString *)addr
             addrID:(NSString *)addrID

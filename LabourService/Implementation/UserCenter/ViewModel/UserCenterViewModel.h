@@ -8,7 +8,7 @@
 
 #import "BaseViewModel.h"
 #import "CityModel.h"
-
+#import "MessageModel.h"
 @interface UserCenterViewModel : BaseViewModel
 + (void)getUserMessage:(NSString *)token
                   page:(NSInteger)page
@@ -29,7 +29,7 @@
             success:(void(^)(NSString * msg , NSArray * cities))success
             failure:(void(^)(NSString * msg ,NSInteger code))failure;
 + (void)getUserInfo:(NSString *)token
-            success:(void(^)(NSString * msg, NSString * balance,BOOL ifPerfect,NSInteger thumbs))success
+            success:(void(^)(NSString * msg, NSString * balance,BOOL ifPerfect,NSInteger thumbs ,NSString * messageCount))success
             failure:(void(^)(NSString * msg ,NSInteger code))failure;
 //登出
 + (void)loginOut:(NSString *)token

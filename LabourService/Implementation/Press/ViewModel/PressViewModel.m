@@ -9,20 +9,43 @@
 #import "PressViewModel.h"
 @implementation PressViewModel
 
-+ (void)pressToken:(NSString *)token type:(NSInteger)type intro:(NSString *)intro addr:(NSString *)addr addrID:(NSString *)addrID kinds:(NSArray *)kinds success:(void (^)(NSString *))success failure:(void (^)(NSString *, NSInteger))failure{
++ (void)pressProjectToken:(NSString *)token name:(NSString *)name tel:(NSString *)tel title:(NSString *)title intro:(NSString *)intro addr:(NSString *)addr addrID:(NSString *)addrID kinds:(NSArray *)kinds success:(void (^)(NSString *))success failure:(void (^)(NSString *, NSInteger))failure{
     
     NSMutableArray * kindsID = [NSMutableArray array];
     for (WorkKind  * k in kinds) {
         [kindsID addObject:[NSString stringWithFormat:@"%ld",(long)k.ID]];
     }
     NSString * joins = [kindsID componentsJoinedByString:@","];
-    NSString * url = type == 1 ?@"PersonInfo/iPersonInfo":@"BusProject/iProject";
+    NSDictionary * dic = @{@"introduce":intro,
+                           @"userName":name ,
+                           @"tel":tel ,
+                           @"address":addr,
+                           @"parentid":addrID,
+                           @"personTypeId":joins,
+                           @"title":title,
+                           @"content":@""
+                           };
+    [ReqManager POST_URLString:@"BusProject/iProject" headerParamter:token parameters:dic showIndicatior:YES success:^(id obj) {
+        success(obj[@"message"]);
+    } failure:^(NSError *error) {
+        failure(error.domain,error.code);
+    }];
+    
+}
++ (void)pressPersonToken:(NSString *)token intro:(NSString *)intro addr:(NSString *)addr addrID:(NSString *)addrID kinds:(NSArray *)kinds success:(void (^)(NSString *))success failure:(void (^)(NSString *, NSInteger))failure{
+    
+    NSMutableArray * kindsID = [NSMutableArray array];
+    for (WorkKind  * k in kinds) {
+        [kindsID addObject:[NSString stringWithFormat:@"%ld",(long)k.ID]];
+    }
+    NSString * joins = [kindsID componentsJoinedByString:@","];
+//    NSString * url = type == 1 ?@"":@"BusProject/iProject";
     NSDictionary * dic = @{@"introduce":intro,
                            @"address":addr,
                            @"parentid":addrID,
                            @"personTypeId":joins
                            };
-    [ReqManager POST_URLString:url headerParamter:token parameters:dic showIndicatior:YES success:^(id obj) {
+    [ReqManager POST_URLString:@"PersonInfo/iPersonInfo" headerParamter:token parameters:dic showIndicatior:YES success:^(id obj) {
         success(obj[@"message"]);
     } failure:^(NSError *error) {
         failure(error.domain ,error.code);

@@ -30,6 +30,7 @@
         _sessionManager = [AFHTTPSessionManager manager];
         _sessionManager.requestSerializer.timeoutInterval = 30 ;
         _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"application/json",@"text/json",@"text/javascript",@"text/html", nil];
+        [_sessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     }
     
     return self ;

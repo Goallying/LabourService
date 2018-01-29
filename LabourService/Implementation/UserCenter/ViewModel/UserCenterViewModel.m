@@ -16,7 +16,9 @@
                            @"messageStatus":[NSString stringWithFormat:@"%ld",status]
                            };
     [ReqManager POST_URLString:@"SysMessage/personMessage" headerParamter:token parameters:dic showIndicatior:YES success:^(id obj) {
-        NSLog(@"=== %@",obj);
+        NSArray * messages = [NSArray yy_modelArrayWithClass:[MessageModel class] json:obj[@"result"]];
+        success(obj[@"message"], messages);
+        
     } failure:^(NSError *error) {
         failure(error.domain ,error.code);
     }] ;
@@ -63,9 +65,11 @@
         failure(error.domain,error.code);
     }];
 }
-+ (void)getUserInfo:(NSString *)token success:(void (^)(NSString *, NSString *, BOOL, NSInteger))success failure:(void (^)(NSString *, NSInteger))failure{
++ (void)getUserInfo:(NSString *)token
+            success:(void(^)(NSString * msg, NSString * balance,BOOL ifPerfect,NSInteger thumbs ,NSString * messageCount))success
+            failure:(void(^)(NSString * msg ,NSInteger code))failure{
     [ReqManager POST_URLString:@"MemberUser/queryMyData" headerParamter:token parameters:nil showIndicatior:YES success:^(id obj) {
-        success(obj[@"message"],obj[@"result"][@"balance"],[obj[@"result"][@"ifPerfect"] boolValue],[obj[@"result"][@"thumbs"] integerValue]);
+        success(obj[@"message"],obj[@"result"][@"balance"],[obj[@"result"][@"ifPerfect"] boolValue],[obj[@"result"][@"thumbs"] integerValue],nonullString(obj[@"result"][@"messageCount"]));
     } failure:^(NSError *error) {
         failure(error.domain,error.code);
     }];

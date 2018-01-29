@@ -53,9 +53,11 @@
 }
 - (void)userDataReq {
     
-    [UserCenterViewModel getUserInfo:User_Info.token success:^(NSString *msg, NSString *balance, BOOL ifPerfect, NSInteger thumbs) {
+    [UserCenterViewModel getUserInfo:User_Info.token success:^(NSString *msg, NSString *balance, BOOL ifPerfect, NSInteger thumbs ,NSString * messageCount) {
         _balace = [balance integerValue] ;
         _thumbs = thumbs ;
+        _mesCountLabel.text = messageCount ;
+        _mesCountLabel.hidden = [messageCount integerValue] == 0 ;
         [_tableView reloadData];
         
     } failure:^(NSString *msg, NSInteger code) {
@@ -145,7 +147,7 @@
         _mesCountLabel.font = Font_12 ;
         _mesCountLabel.textColor = [UIColor whiteColor];
         _mesCountLabel.backgroundColor = UIColorHex(0xff3333);
-        _mesCountLabel.text = @" 999 ";
+        _mesCountLabel.hidden = YES;
         [_mesBtn addSubview:_mesCountLabel];
         _mesCountLabel.maker.leftTo(_mesBtn, 12).topTo(_mesBtn, -8).widthGraterThan(16).heightEqualTo(16);
     }
@@ -161,7 +163,7 @@
         _headerBtn.layer.cornerRadius = 40 ;
         _headerBtn.clipsToBounds = YES ;
         //        NSString * s = User_Info.headUrl ;
-        [_headerBtn sd_setImageWithURL:[NSURL URLWithString:User_Info.headUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultHeader"]];
+        [_headerBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:User_Info.headUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultHeader"]];
         [_headerBtn addTarget:self action:@selector(headerClick) forControlEvents:UIControlEventTouchUpInside];
         [_tableViewHeaderView addSubview:_headerBtn];
         _headerBtn.maker.centerXTo(_tableViewHeaderView, 0).topTo(_tableViewHeaderView, 64).widthEqualTo(80).heightEqualTo(80);
