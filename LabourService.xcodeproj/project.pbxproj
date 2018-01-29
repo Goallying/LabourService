@@ -105,7 +105,7 @@
 		55B947282007135800E3B760 /* CSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B947272007135800E3B760 /* CSTabController.m */; };
 		55B9472F2007300300E3B760 /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B9472E2007300300E3B760 /* UserCenterViewController.m */; };
 		55B947322007305F00E3B760 /* AppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B947312007305F00E3B760 /* AppointmentViewController.m */; };
-		55B947352007306B00E3B760 /* PressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B947342007306B00E3B760 /* PressViewController.m */; };
+		55B947352007306B00E3B760 /* PressProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B947342007306B00E3B760 /* PressProjectViewController.m */; };
 		55B947382007307D00E3B760 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B947372007307D00E3B760 /* SearchViewController.m */; };
 		55B9473B2007398500E3B760 /* UIColor+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B9473A2007398500E3B760 /* UIColor+Add.m */; };
 		55B9473E2008613900E3B760 /* NewsSingleImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B9473D2008613900E3B760 /* NewsSingleImageCell.m */; };
@@ -164,6 +164,8 @@
 		AE2746AB2017793F0035B952 /* KindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2746A92017793F0035B952 /* KindCell.m */; };
 		AE2746AF20177C160035B952 /* PressViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2746AE20177C160035B952 /* PressViewModel.m */; };
 		AE2746B220177DD70035B952 /* WorkKind.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2746B120177DD70035B952 /* WorkKind.m */; };
+		AE2F8ACD201F6223006DA6C5 /* KindWithNumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2F8ACC201F6223006DA6C5 /* KindWithNumCell.m */; };
+		AE2F8AD0201F7453006DA6C5 /* PressPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2F8ACF201F7453006DA6C5 /* PressPersonViewController.m */; };
 		AE397F54200E1FA200128B09 /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE397F53200E1FA200128B09 /* SearchViewModel.m */; };
 		AE65D2C62009A3260078EB7F /* NSString+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65D2C52009A3260078EB7F /* NSString+Add.m */; };
 		AE840E38200F8A3B0064A461 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE840E37200F8A3B0064A461 /* BannerModel.m */; };
@@ -375,8 +377,8 @@
 		55B9472E2007300300E3B760 /* UserCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
 		55B947302007305F00E3B760 /* AppointmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppointmentViewController.h; sourceTree = "<group>"; };
 		55B947312007305F00E3B760 /* AppointmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppointmentViewController.m; sourceTree = "<group>"; };
-		55B947332007306B00E3B760 /* PressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PressViewController.h; sourceTree = "<group>"; };
-		55B947342007306B00E3B760 /* PressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PressViewController.m; sourceTree = "<group>"; };
+		55B947332007306B00E3B760 /* PressProjectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PressProjectViewController.h; sourceTree = "<group>"; };
+		55B947342007306B00E3B760 /* PressProjectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PressProjectViewController.m; sourceTree = "<group>"; };
 		55B947362007307D00E3B760 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		55B947372007307D00E3B760 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		55B947392007398500E3B760 /* UIColor+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Add.h"; sourceTree = "<group>"; };
@@ -496,6 +498,10 @@
 		AE2746AE20177C160035B952 /* PressViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PressViewModel.m; sourceTree = "<group>"; };
 		AE2746B020177DD70035B952 /* WorkKind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkKind.h; sourceTree = "<group>"; };
 		AE2746B120177DD70035B952 /* WorkKind.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkKind.m; sourceTree = "<group>"; };
+		AE2F8ACB201F6223006DA6C5 /* KindWithNumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KindWithNumCell.h; sourceTree = "<group>"; };
+		AE2F8ACC201F6223006DA6C5 /* KindWithNumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KindWithNumCell.m; sourceTree = "<group>"; };
+		AE2F8ACE201F744D006DA6C5 /* PressPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PressPersonViewController.h; sourceTree = "<group>"; };
+		AE2F8ACF201F7453006DA6C5 /* PressPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PressPersonViewController.m; sourceTree = "<group>"; };
 		AE397F52200E1FA200128B09 /* SearchViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewModel.h; sourceTree = "<group>"; };
 		AE397F53200E1FA200128B09 /* SearchViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewModel.m; sourceTree = "<group>"; };
 		AE65D2C42009A3260078EB7F /* NSString+Add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Add.h"; sourceTree = "<group>"; };
@@ -821,8 +827,6 @@
 			children = (
 				557ACBDE200DC3B4009293FA /* SearchCell.h */,
 				557ACBDF200DC3B4009293FA /* SearchCell.m */,
-				557ACBFD200DFDD3009293FA /* TagView.h */,
-				557ACBFE200DFDD3009293FA /* TagView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -863,6 +867,8 @@
 		558E5E7920119EFE009C6FF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				557ACBFD200DFDD3009293FA /* TagView.h */,
+				557ACBFE200DFDD3009293FA /* TagView.m */,
 				558753A0201EB1A400A7F14E /* SwitchView.h */,
 				5587539F201EB1A300A7F14E /* SwitchView.m */,
 				558E5E7A20119F2F009C6FF2 /* CommonPicker.h */,
@@ -1415,6 +1421,8 @@
 			children = (
 				AE2746AA2017793F0035B952 /* KindCell.h */,
 				AE2746A92017793F0035B952 /* KindCell.m */,
+				AE2F8ACB201F6223006DA6C5 /* KindWithNumCell.h */,
+				AE2F8ACC201F6223006DA6C5 /* KindWithNumCell.m */,
 				AEF619B8201465D20079AC04 /* PressView.h */,
 				AEF619B9201465D20079AC04 /* PressView.m */,
 				AE2746A6201776430035B952 /* SideSelectView.h */,
@@ -1426,8 +1434,10 @@
 		AEF619B6201465A60079AC04 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				55B947332007306B00E3B760 /* PressViewController.h */,
-				55B947342007306B00E3B760 /* PressViewController.m */,
+				AE2F8ACE201F744D006DA6C5 /* PressPersonViewController.h */,
+				AE2F8ACF201F7453006DA6C5 /* PressPersonViewController.m */,
+				55B947332007306B00E3B760 /* PressProjectViewController.h */,
+				55B947342007306B00E3B760 /* PressProjectViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1535,7 +1545,7 @@
 				557ACBE0200DC3B4009293FA /* SearchCell.m in Sources */,
 				AE2746A8201776430035B952 /* SideSelectView.m in Sources */,
 				5538D4302015E74D00920ABB /* MJRefreshConst.m in Sources */,
-				55B947352007306B00E3B760 /* PressViewController.m in Sources */,
+				55B947352007306B00E3B760 /* PressProjectViewController.m in Sources */,
 				55B9473B2007398500E3B760 /* UIColor+Add.m in Sources */,
 				55C09D1C1FFCA6B100A02194 /* AFURLSessionManager.m in Sources */,
 				55CF53E2200C496C00732DC5 /* IQPreviousNextView.m in Sources */,
@@ -1543,6 +1553,7 @@
 				AEF619B120145DBC0079AC04 /* UIView+TZLayout.m in Sources */,
 				5538D42D2015E74D00920ABB /* MJRefreshNormalHeader.m in Sources */,
 				AE397F54200E1FA200128B09 /* SearchViewModel.m in Sources */,
+				AE2F8AD0201F7453006DA6C5 /* PressPersonViewController.m in Sources */,
 				5538D4332015E74D00920ABB /* UIScrollView+MJRefresh.m in Sources */,
 				557ACBBC200DB078009293FA /* SDWebImageCodersManager.m in Sources */,
 				55CF53E0200C496C00732DC5 /* IQTextView.m in Sources */,
@@ -1592,6 +1603,7 @@
 				558E5E7C20119F2F009C6FF2 /* CommonPicker.m in Sources */,
 				5538D3E820157D5F00920ABB /* NewsCustomViewController.m in Sources */,
 				557ACBCE200DB078009293FA /* UIView+WebCacheOperation.m in Sources */,
+				AE2F8ACD201F6223006DA6C5 /* KindWithNumCell.m in Sources */,
 				55C09CF71FFCA67200A02194 /* BaseViewController.m in Sources */,
 				5538D4282015E74D00920ABB /* MJRefreshAutoStateFooter.m in Sources */,
 				557ACBBA200DB078009293FA /* SDWebImageCoder.m in Sources */,

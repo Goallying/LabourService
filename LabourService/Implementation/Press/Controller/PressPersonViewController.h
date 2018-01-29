@@ -7,11 +7,6 @@
 //
 
 #import "BaseViewController.h"
-typedef NS_ENUM(NSInteger ,Press_VC_Type){
-    Person = 1,
-    Project = 2
-};
-@interface PressViewController : BaseViewController
+@interface PressPersonViewController : BaseViewController
 
-@property (nonatomic ,assign)Press_VC_Type pressType;
 @end

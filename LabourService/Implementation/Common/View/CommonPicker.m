@@ -80,7 +80,7 @@
         _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenH  - PickerH, kScreenW, PickerH)];
         _contentView.backgroundColor = [UIColor whiteColor];
 
-        UIButton * cancel = [[UIButton alloc]initWithFrame:CGRectMake(16, 8, 80, 44)];
+        UIButton * cancel = [[UIButton alloc]initWithFrame:CGRectMake(16, 8, 60, 35)];
         [cancel setTitleColor:UIColor_333333 forState:UIControlStateNormal];
         [cancel setTitle:@"取消" forState:UIControlStateNormal];
         cancel.layer.borderColor = UIColor_d7d7d7.CGColor;
@@ -89,7 +89,7 @@
         [cancel addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:cancel];
         
-        UIButton * sure = [[UIButton alloc]initWithFrame:CGRectMake(kScreenW - 16 - 80, 8, 80, 44)];
+        UIButton * sure = [[UIButton alloc]initWithFrame:CGRectMake(kScreenW - 16 - 60, 8, 60, 35)];
         [sure setBackgroundColor:UIColor_0x007ed3];
         [sure setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [sure setTitle:@"确定" forState:UIControlStateNormal];

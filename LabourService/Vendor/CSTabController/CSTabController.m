@@ -8,7 +8,8 @@
 
 #import "CSTabController.h"
 #import "PressView.h"
-#import "PressViewController.h"
+#import "PressProjectViewController.h"
+#import "PressPersonViewController.h"
 @interface CSTabController ()<CSTabBarDelegate>
 
 @property (nonatomic ,strong)CSTabBar * bar ;
@@ -33,9 +34,14 @@
     [PressView pressView:source didFinishPicker:^(NSInteger PressType) {
         
             UINavigationController * nav =  self.selectedViewController ;
-            PressViewController * press = [PressViewController new];
-            press.pressType = PressType;
-            [nav pushViewController:press animated:YES];
+        if (PressType == 1) {
+            PressPersonViewController * person = [PressPersonViewController new];
+            [nav pushViewController:person animated:YES];
+        }else if (PressType == 2){
+            PressProjectViewController * project = [PressProjectViewController new];
+            [nav pushViewController:project animated:YES];
+        }
+    
     }];
     
 }

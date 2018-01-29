@@ -15,7 +15,7 @@
     return @{@"ID":@"id"};
 }
 + (NSArray *)modelPropertyBlacklist{
-    return @[@"subKinds",@"selected"];
+    return @[@"subKinds",@"selected",@"kindCount"];
 }
 
 - (NSMutableArray<WorkKind *> *)subKinds{

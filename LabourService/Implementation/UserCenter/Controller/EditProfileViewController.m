@@ -330,9 +330,7 @@ UINavigationControllerDelegate>
     s6.backgroundColor = UIColor_d7d7d7 ;
     [_backView addSubview:s6];
     s6.maker.topTo(_phoneTF , 0).leftTo(_backView, 0).rightTo(_backView, 0).heightEqualTo(1);
-    
-//    _backView.maker.leftTo(self.view, 0).topTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50 * 7 + 10 + 4 + 5 + 10);
-        _backView.maker.leftTo(self.view, 0).topTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50 * 7 + 10 + 5 + 5 + 10 + _tagV.pressTagsHeight);
+    _backView.maker.leftTo(self.view, 0).topTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50 * 7 + 10 + 5 + 5 + 10 + _tagV.pressTagsHeight);
 
     
     UIButton * sureBtn = [UIButton new];

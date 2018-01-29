@@ -39,7 +39,6 @@
         [kindsID addObject:[NSString stringWithFormat:@"%ld",(long)k.ID]];
     }
     NSString * joins = [kindsID componentsJoinedByString:@","];
-//    NSString * url = type == 1 ?@"":@"BusProject/iProject";
     NSDictionary * dic = @{@"introduce":intro,
                            @"address":addr,
                            @"parentid":addrID,

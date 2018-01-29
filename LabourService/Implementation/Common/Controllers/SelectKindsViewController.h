@@ -11,4 +11,5 @@
 @interface SelectKindsViewController : BaseViewController
 @property (nonatomic ,copy)void(^finishSelect)(NSArray * kinds) ;
 @property (nonatomic ,assign)NSInteger maxSelectCount ;
+@property (nonatomic ,assign)BOOL selectKindMaxPersonNumLimited ;
 @end

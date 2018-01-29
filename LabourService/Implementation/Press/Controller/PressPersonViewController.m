@@ -6,12 +6,12 @@
 //  Copyright © 2018年 朱来飞. All rights reserved.
 //
 
-#import "PressViewController.h"
+#import "PressPersonViewController.h"
 #import "PressViewModel.h"
 #import "UIPlaceholderTextView.h"
 #import "TagView.h"
 #import "SelectKindsViewController.h"
-@interface PressViewController ()
+@interface PressPersonViewController ()
 @property (nonatomic ,strong) UIScrollView * scrollView  ;
 @property (nonatomic ,strong)UIView * contentV  ;
 @property (nonatomic ,strong)UIView * kindsView  ;
@@ -22,9 +22,9 @@
 @property (nonatomic ,strong)NSArray * kinds  ;
 @end
 
-@implementation PressViewController
+@implementation PressPersonViewController
 - (NSString *)title{
-    return self.pressType == Person?@"人才发布":@"项目发布";
+    return @"人才发布";
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -195,7 +195,7 @@
 
     //
     UILabel * introduceT = [[UILabel alloc]init];
-    introduceT.text = self.pressType == Project?@"项目简介":@"个人简介";
+    introduceT.text = @"个人简介";
     introduceT.font = Font_15 ;
     introduceT.textColor = UIColor_333333 ;
     [_contentV addSubview:introduceT];

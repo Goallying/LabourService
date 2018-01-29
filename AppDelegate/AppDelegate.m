@@ -11,7 +11,6 @@
 #import "CSTabController.h"
 #import "NewsViewController.h"
 #import "SearchViewController.h"
-#import "PressViewController.h"
 #import "AppointmentViewController.h"
 #import "UserCenterViewController.h"
 

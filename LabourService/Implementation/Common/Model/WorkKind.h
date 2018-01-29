@@ -15,5 +15,7 @@
 @property (nonatomic ,assign)NSInteger  pid ;
 
 @property (nonatomic ,strong)NSMutableArray<WorkKind *> * subKinds ;
+
 @property (nonatomic ,assign)BOOL  selected ;
+@property (nonatomic ,assign)NSInteger kindCount ; //该工种在发布时候需要的人数
 @end
