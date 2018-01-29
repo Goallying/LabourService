@@ -38,7 +38,7 @@ static void * MGRKey  = @"MGRKey";
     
     User_Info.lat = location.coordinate.latitude;
     User_Info.lon = location.coordinate.longitude;
-  
+//    NSLog(@"addr = %@ ,pro == %@, city == %@ ,adcode == %@",reGeocode.formattedAddress,reGeocode.province,reGeocode.city,reGeocode.adcode);
     if (everSucceed == NO && User_Info.city && User_Info.adcode && User_Info.province && User_Info.formattedAddress) {
         //之前没有成功过，通知刷新页面，因为页面加载完可能定位信息还没有。退出程序无需保存定位信息，因为下次进入会重新定位
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_UPDATE_USER_INFO object:nil];

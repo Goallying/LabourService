@@ -49,10 +49,6 @@
 }
 - (void)press {
     
-    if (!User_Info.adcode) {
-        return;
-    }
-    
     [PressViewModel pressPersonToken:User_Info.token
                          intro:_txtView.text addr:User_Info.formattedAddress addrID:User_Info.adcode
                          kinds:_kinds

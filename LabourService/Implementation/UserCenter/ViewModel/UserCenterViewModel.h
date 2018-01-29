@@ -9,7 +9,14 @@
 #import "BaseViewModel.h"
 #import "CityModel.h"
 #import "MessageModel.h"
+#import "SearchListModel.h"
+
 @interface UserCenterViewModel : BaseViewModel
++ (void)getUserPressPage:(NSInteger)page
+           pressType:(NSInteger)type
+             success:(void(^)(NSString * msg ,NSArray * pressRecords))success
+             failure:(void(^)(NSString * msg ,NSInteger code))failure;
+
 + (void)getUserMessage:(NSString *)token
                   page:(NSInteger)page
                 status:(NSInteger)status

@@ -30,6 +30,32 @@
     return  [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
 
+//默认值
+- (NSString *)formattedAddress{
+    if (!_formattedAddress) {
+        return @"安徽省合肥市蜀山区聚云路靠近白天鹅国际商务中心";
+    }
+    return _formattedAddress ;
+}
+- (NSString *)province{
+    if (!_province) {
+        _province = @"安徽省";
+    }
+    return _province ;
+}
+- (NSString *)city{
+    if (!_city) {
+        _city = @"合肥";
+    }
+    return _city ;
+}
+- (NSString *)adcode{
+    if (!_adcode) {
+        _adcode = @"340104";
+    }
+    return _adcode ;
+}
+
 @end
 
 

@@ -12,6 +12,7 @@
 @implementation CSBaselineButton
 -(void)drawRect:(CGRect)rect
 {
+    [super drawRect:rect];
     if (self.selected) {
         CGFloat lineWidth = 2.0;
         CGColorRef color = UIColorHex(0x007ed3).CGColor;

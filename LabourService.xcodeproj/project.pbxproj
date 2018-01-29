@@ -97,6 +97,7 @@
 		558753A4201EB1BD00A7F14E /* CSBaselineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 558753A2201EB1BC00A7F14E /* CSBaselineButton.m */; };
 		558753A7201EE4CA00A7F14E /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 558753A6201EE4CA00A7F14E /* MessageCell.m */; };
 		558753AA201EE4E100A7F14E /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 558753A9201EE4E100A7F14E /* MessageModel.m */; };
+		558753AD201F06DB00A7F14E /* MyPressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558753AC201F06DB00A7F14E /* MyPressViewController.m */; };
 		558E5E78201188D7009C6FF2 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558E5E77201188D7009C6FF2 /* EditProfileViewController.m */; };
 		558E5E7C20119F2F009C6FF2 /* CommonPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 558E5E7B20119F2F009C6FF2 /* CommonPicker.m */; };
 		558E5E832011E82A009C6FF2 /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 558E5E822011E82A009C6FF2 /* CityModel.m */; };
@@ -358,6 +359,8 @@
 		558753A6201EE4CA00A7F14E /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		558753A8201EE4E100A7F14E /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		558753A9201EE4E100A7F14E /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		558753AB201F06DB00A7F14E /* MyPressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPressViewController.h; sourceTree = "<group>"; };
+		558753AC201F06DB00A7F14E /* MyPressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPressViewController.m; sourceTree = "<group>"; };
 		558E5E76201188D7009C6FF2 /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		558E5E77201188D7009C6FF2 /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		558E5E7A20119F2F009C6FF2 /* CommonPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonPicker.h; sourceTree = "<group>"; };
@@ -1277,6 +1280,8 @@
 		55CF53F0200C770C00732DC5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				558753AB201F06DB00A7F14E /* MyPressViewController.h */,
+				558753AC201F06DB00A7F14E /* MyPressViewController.m */,
 				5587539C201EB17F00A7F14E /* MessageViewController.h */,
 				5587539D201EB18000A7F14E /* MessageViewController.m */,
 				55B9472D2007300300E3B760 /* UserCenterViewController.h */,
@@ -1557,6 +1562,7 @@
 				55C09CE21FFCA02A00A02194 /* UIView+Layout.m in Sources */,
 				5587539E201EB18000A7F14E /* MessageViewController.m in Sources */,
 				557ACBB5200DB078009293FA /* MKAnnotationView+WebCache.m in Sources */,
+				558753AD201F06DB00A7F14E /* MyPressViewController.m in Sources */,
 				5538D42C2015E74D00920ABB /* MJRefreshGifHeader.m in Sources */,
 				55C09CCD1FFC9B6900A02194 /* NewsViewController.m in Sources */,
 				5538D4292015E74D00920ABB /* MJRefreshBackGifFooter.m in Sources */,

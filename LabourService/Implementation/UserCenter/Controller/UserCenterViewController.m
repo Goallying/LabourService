@@ -11,6 +11,7 @@
 #import "UserCenterViewModel.h"
 #import "UserCenterSectionHeader.h"
 #import "MessageViewController.h"
+#import "MyPressViewController.h"
 @interface UserCenterViewController()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)UIButton * headerBtn ;
 @property (nonatomic ,strong)UILabel * nameLabel;
@@ -121,6 +122,14 @@
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero] ;
     }
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 1) {
+        MyPressViewController * vc = [MyPressViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 - (NSArray *)images{

@@ -67,8 +67,9 @@
         _userInfo.userName = userName;
     }
     [self save];
-    
 }
+
+
 
 - (void)save {
     NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"userInfo"];

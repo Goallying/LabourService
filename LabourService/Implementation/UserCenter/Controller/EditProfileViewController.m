@@ -70,7 +70,7 @@ UINavigationControllerDelegate>
 }
 - (void)dataRequest {
     
-    if (!User_Info.adcode || User_Info.adcode.length < 2) {
+    if (User_Info.adcode.length < 2) {
         return;
     }
     NSString * code = [[User_Info.adcode substringToIndex:2] stringByAppendingString:@"0000"];

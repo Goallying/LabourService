@@ -33,10 +33,13 @@
     _addBtn.maker.topTo(self.view, 12).rightTo(self.view, 12).heightEqualTo(20).widthEqualTo(20);
     _pageController.view.maker.topTo(_titleScrView, 0).leftTo(self.view, 0).rightTo(self.view,0).bottomTo(self.view, 0);
     
-    [self reloadData];
+    [self _reloadData];
 }
-
-- (void)reloadData {
+- (void)reloadData{
+    _selectedIndex = 0 ;
+    [self _reloadData];
+}
+- (void)_reloadData {
     
     if ([self.delegate respondsToSelector:@selector(numberOfPagesInPageController:)]) {
         for (UIView * v in _titleScrView.subviews) {

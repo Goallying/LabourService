@@ -9,6 +9,29 @@
 #import "UserCenterViewModel.h"
 #import "WorkKind.h"
 @implementation UserCenterViewModel
+
++ (void)getUserPressPage:(NSInteger)page
+               pressType:(NSInteger)type
+                 success:(void(^)(NSString * msg ,NSArray * pressRecords))success
+                 failure:(void(^)(NSString * msg ,NSInteger code))failure{
+    
+    
+    NSDictionary * dic = @{@"page":[NSString stringWithFormat:@"%ld",page],
+                           @"limit":@"20",
+                           };
+    NSString * url = nil;
+    if (type == 1) {
+        url = @"PersonInfo/sPerson";
+    }else{
+        url = @"BusProject/sPerson";
+    }
+    [ReqManager POST_URLString:url parameters:dic showIndicatior:YES success:^(id obj) {
+        NSArray * records = [NSArray yy_modelArrayWithClass:[SearchListModel class] json:obj[@"result"]];
+        success(obj[@"message"],records);
+    } failure:^(NSError *error) {
+        failure(error.domain ,error.code);
+    }];
+}
 + (void)getUserMessage:(NSString *)token page:(NSInteger)page status:(NSInteger)status success:(void (^)(NSString *, NSArray *))success failure:(void (^)(NSString *, NSInteger))failure{
     
     NSDictionary * dic = @{@"page":[NSString stringWithFormat:@"%ld",page],

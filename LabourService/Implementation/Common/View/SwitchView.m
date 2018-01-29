@@ -41,7 +41,6 @@
         CSBaselineButton * b =[[CSBaselineButton alloc]init];
         [self.btns addObject: b];
     }
-    [self setNeedsLayout];
     [self layoutIfNeeded];
 }
 - (NSMutableArray *)btns{
@@ -52,8 +51,12 @@
 }
 - (void)click:(CSBaselineButton *) b {
     
+    
     static NSInteger lastIdx = 1 ;
     CSBaselineButton * last = self.btns[lastIdx - 1];
+    if (lastIdx == b.tag) {
+        return;
+    }
     last.selected = NO ;
     
     b.selected = YES ;

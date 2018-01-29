@@ -59,9 +59,6 @@ UITextFieldDelegate
 }
 - (void)bannerRequest {
     
-    if (!User_Info.province) {
-        return;
-    }
     [SearchViewModel getSearchBanner:User_Info.province success:^(NSString *msg, NSArray *banners, NSArray *imageURLs) {
         _banners = [banners mutableCopy];
         _sdCycleView.imageURLStringsGroup = imageURLs;
@@ -71,9 +68,6 @@ UITextFieldDelegate
 }
 - (void)dataRequest:(PullType)pullType page:(NSInteger)page kind:(NSString *)kind{
     
-    if (!User_Info.adcode) {
-        return;
-    }
     [SearchViewModel getSearchList:_page parentid:User_Info.adcode parameter:kind success:^(NSString *msg, NSArray *peoples) {
         if (pullType == Pull_Refresh) {
             _people = [peoples mutableCopy];
