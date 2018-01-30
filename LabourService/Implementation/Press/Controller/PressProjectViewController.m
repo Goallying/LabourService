@@ -22,6 +22,8 @@
 //@property (nonatomic ,strong)TagView * tagView ;
 @property (nonatomic ,strong)NSArray * kinds  ;
 @property (nonatomic ,strong)UITableView * kindsTableView ;
+
+@property (nonatomic ,strong)UITextField * titleTF ;
 @end
 
 @implementation PressProjectViewController
@@ -51,11 +53,14 @@
 }
 - (void)press {
     
-    [PressViewModel pressPersonToken:User_Info.token
-                         intro:_txtView.text addr:User_Info.formattedAddress addrID:User_Info.adcode
-                         kinds:_kinds
-                       success:^(NSString *msg) {
-    
+    [PressViewModel pressProjectToken:User_Info.token
+                                 name:User_Info.userName
+                                  tel:User_Info.userName
+                                title:_titleTF.text
+                                intro:_txtView.text
+                                 addr:User_Info.formattedAddress
+                               addrID:User_Info.adcode
+                                kinds:_kinds success:^(NSString *msg) {
         [CToast showWithText:msg];
     } failure:^(NSString *msg, NSInteger code) {
         [CToast showWithText:msg];
@@ -75,7 +80,7 @@
         [_kindsTableView reloadData];
         _kindsTableView.heightConstraint.constant = _kinds.count * 30 ;
         _kindsView.heightConstraint.constant = 44 + _kinds.count * 30 ;
-        _contentV.heightConstraint.constant = 30 + 44 * 5 + 30 + 100 + 20 + 40 + _kinds.count * 30;
+        _contentV.heightConstraint.constant = 30 + 44 * 6 + 30 + 100 + 20 + 40 + _kinds.count * 30;
     }];
     [self.navigationController pushViewController:selectVC animated:YES];
 }
@@ -188,10 +193,30 @@
     s3.backgroundColor = UIColor_d7d7d7 ;
     [_contentV addSubview:s3];
     s3.maker.leftTo(_contentV, 16).rightTo(_contentV, 0).heightEqualTo(1).topTo(ageL, 0);
+    //  标题
+    UILabel * title = [[UILabel alloc]init];
+    title.text = @"标题";
+    title.font = Font_15 ;
+    title.textColor = UIColor_333333 ;
+    [_contentV addSubview:title];
+    title.maker.topTo(s3, 0).leftTo(_contentV, 16).widthGraterThan(44).heightEqualTo(44);
+    
+    _titleTF = [UITextField new];
+    _titleTF.placeholder = @"请输入标题";
+    _titleTF.textAlignment = NSTextAlignmentRight ;
+    _titleTF.borderStyle = UITextBorderStyleNone ;
+    _titleTF.textColor = UIColor_333333 ;
+    [_contentV addSubview:_titleTF];
+    _titleTF.maker.leftTo(title, 16).rightTo(_contentV, 16).centerYTo(title, 0).heightEqualTo(30);
+    
+    UIView * s_title = [UIView new];
+    s_title.backgroundColor = UIColor_d7d7d7 ;
+    [_contentV addSubview:s_title];
+    s_title.maker.leftTo(_contentV, 16).rightTo(_contentV, 0).heightEqualTo(1).topTo(title, 0);
     //
     _kindsView = [UIView new];
     [_contentV addSubview:_kindsView];
-    _kindsView.maker.leftTo(_contentV, 16).topTo(s3, 0).rightTo(_contentV, 16).heightEqualTo(44);
+    _kindsView.maker.leftTo(_contentV, 16).topTo(s_title, 0).rightTo(_contentV, 16).heightEqualTo(44);
     
     UILabel * kindT = [[UILabel alloc]init];
     kindT.text = @"添加工种";
@@ -240,7 +265,7 @@
     [_contentV addSubview:press];
     press.maker.topTo(_txtView, 20).leftTo(_contentV, 16).rightTo(_contentV, 16).heightEqualTo(40);
     
-    CGFloat h = 30 + 44 * 5 + 30 + 100 + 20 + 40  ;
+    CGFloat h = 30 + 44 * 6 + 30 + 100 + 20 + 40  ;
     _scrollView.contentSize = CGSizeMake(kScreenW,h) ;
     _contentV.heightConstraint.constant = h;
 }

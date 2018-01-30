@@ -12,9 +12,12 @@
 + (void)pressProjectToken:(NSString *)token name:(NSString *)name tel:(NSString *)tel title:(NSString *)title intro:(NSString *)intro addr:(NSString *)addr addrID:(NSString *)addrID kinds:(NSArray *)kinds success:(void (^)(NSString *))success failure:(void (^)(NSString *, NSInteger))failure{
     
     NSMutableArray * kindsID = [NSMutableArray array];
+    NSString * content = @"因项目需要现招聘";
     for (WorkKind  * k in kinds) {
         [kindsID addObject:[NSString stringWithFormat:@"%ld",(long)k.ID]];
+      content = [content stringByAppendingFormat:@"%@%ld人、",k.realName,k.kindCount];
     }
+    content =  [content substringToIndex:[content length] - 1];
     NSString * joins = [kindsID componentsJoinedByString:@","];
     NSDictionary * dic = @{@"introduce":intro,
                            @"userName":name ,
@@ -23,8 +26,9 @@
                            @"parentid":addrID,
                            @"personTypeId":joins,
                            @"title":title,
-                           @"content":@""
+                           @"content":content
                            };
+    
     [ReqManager POST_URLString:@"BusProject/iProject" headerParamter:token parameters:dic showIndicatior:YES success:^(id obj) {
         success(obj[@"message"]);
     } failure:^(NSError *error) {

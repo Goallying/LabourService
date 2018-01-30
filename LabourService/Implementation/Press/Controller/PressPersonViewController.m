@@ -62,6 +62,7 @@
 }
 - (void)addKind {
     SelectKindsViewController * selectVC  = [SelectKindsViewController new];
+    selectVC.maxSelectCount = 3 ;
     [selectVC setFinishSelect:^(NSArray *kinds) {
         
         _kinds = [kinds copy];
