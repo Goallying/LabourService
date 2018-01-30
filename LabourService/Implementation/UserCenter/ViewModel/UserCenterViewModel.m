@@ -5,11 +5,25 @@
 //  Created by 朱来飞 on 2018/1/15.
 //  Copyright © 2018年 朱来飞. All rights reserved.
 //
-
 #import "UserCenterViewModel.h"
 #import "WorkKind.h"
 @implementation UserCenterViewModel
 
++ (void)deletePress:(NSString *)token
+         deleteType:(NSInteger)type
+            pressID:(NSString *)ID
+            success:(void(^)(NSString * msg))success
+            failure:(void(^)(NSString * msg ,NSInteger code))failure{
+    
+    NSDictionary * dic = @{@"id":ID};
+    
+    NSString * url = type == 1?@"PersonInfo/dPersonInfo":@"BusProject/dProject";
+    [ReqManager POST_URLString:url headerParamter:token parameters:dic showIndicatior:YES success:^(id obj) {
+        success(obj[@"message"]);
+    } failure:^(NSError *error) {
+        failure(error.domain,error.code);
+    }];
+}
 + (void)getUserPressPage:(NSInteger)page
                pressType:(NSInteger)type
                  success:(void(^)(NSString * msg ,NSArray * pressRecords))success

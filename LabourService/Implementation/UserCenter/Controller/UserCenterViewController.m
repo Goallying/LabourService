@@ -12,6 +12,7 @@
 #import "UserCenterSectionHeader.h"
 #import "MessageViewController.h"
 #import "MyPressViewController.h"
+#import "DownloadViewController.h"
 @interface UserCenterViewController()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)UIButton * headerBtn ;
 @property (nonatomic ,strong)UILabel * nameLabel;
@@ -88,6 +89,8 @@
             
         }else if (operation == Click_Right){
             
+            DownloadViewController * vc = [DownloadViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }];
     return header ;

@@ -39,7 +39,6 @@
     _swithView.maker.topTo(self.view, 0).leftTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50);
     _tableView.maker.topTo(_swithView, 0).leftTo(self.view, 0).rightTo(self.view, 0).bottomTo(self.view, 0);
     
-    
     _page = 1 ;
     _option = 1 ;
     [self getMyPress:_option page:_page pullType:Pull_Refresh];
@@ -85,6 +84,14 @@
         [self.navigationController pushViewController:h5 animated:YES];
     }
 }
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SearchListModel * model =  _records[indexPath.row] ;
+    UITableViewRowAction * delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self deletePressType:_option pressID:model.ID];
+    }];
+    return @[delete];
+}
 - (void)getMyPress:(NSInteger)pressType page:(NSInteger)page pullType:(PullType)type{
     
     [UserCenterViewModel getUserPressPage:_page pressType:pressType success:^(NSString *msg, NSArray *pressRecords) {
@@ -99,6 +106,15 @@
         [CToast showWithText:msg];
     }] ;
     
+}
+- (void)deletePressType:(NSInteger)type pressID:(NSString *)ID {
+    
+    [UserCenterViewModel deletePress:User_Info.token deleteType:type pressID:ID success:^(NSString *msg) {
+        [CToast showWithText:msg];
+        [self refresh];
+    } failure:^(NSString *msg, NSInteger code) {
+        [CToast showWithText:msg];
+    }];
 }
 - (SwitchView *)swithView{
     if (!_swithView) {

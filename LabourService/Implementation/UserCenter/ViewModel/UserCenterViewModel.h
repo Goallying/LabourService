@@ -12,6 +12,13 @@
 #import "SearchListModel.h"
 
 @interface UserCenterViewModel : BaseViewModel
+
++ (void)deletePress:(NSString *)token
+         deleteType:(NSInteger)type
+            pressID:(NSString *)ID
+            success:(void(^)(NSString * msg))success
+            failure:(void(^)(NSString * msg ,NSInteger code))failure;
+
 + (void)getUserPressPage:(NSInteger)page
            pressType:(NSInteger)type
              success:(void(^)(NSString * msg ,NSArray * pressRecords))success

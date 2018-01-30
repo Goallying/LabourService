@@ -54,7 +54,7 @@
 - (void)press {
     
     [PressViewModel pressProjectToken:User_Info.token
-                                 name:User_Info.userName
+                                 name:User_Info.realName?User_Info.realName:User_Info.userName
                                   tel:User_Info.userName
                                 title:_titleTF.text
                                 intro:_txtView.text

@@ -158,6 +158,8 @@
 		55CF53FC200C98EE00732DC5 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF53FB200C98EE00732DC5 /* NewsModel.m */; };
 		55CF53FF200CA65D00732DC5 /* NewsSeveralImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF53FE200CA65D00732DC5 /* NewsSeveralImageCell.m */; };
 		55CF5402200CAABD00732DC5 /* Ad_VdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF5401200CAABD00732DC5 /* Ad_VdCell.m */; };
+		55EB207A2020227300024166 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB20792020227300024166 /* DownloadViewController.m */; };
+		55EB207D2020232900024166 /* UIImage+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB207C2020232900024166 /* UIImage+Add.m */; };
 		AE123EE62010C742005EDCB0 /* UserCenterSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = AE123EE52010C742005EDCB0 /* UserCenterSectionHeader.m */; };
 		AE2746A52017759B0035B952 /* SelectKindsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2746A42017759B0035B952 /* SelectKindsViewController.m */; };
 		AE2746A8201776430035B952 /* SideSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2746A7201776430035B952 /* SideSelectView.m */; };
@@ -486,6 +488,10 @@
 		55CF53FE200CA65D00732DC5 /* NewsSeveralImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSeveralImageCell.m; sourceTree = "<group>"; };
 		55CF5400200CAABD00732DC5 /* Ad_VdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ad_VdCell.h; sourceTree = "<group>"; };
 		55CF5401200CAABD00732DC5 /* Ad_VdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ad_VdCell.m; sourceTree = "<group>"; };
+		55EB20782020227300024166 /* DownloadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
+		55EB20792020227300024166 /* DownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
+		55EB207B2020232900024166 /* UIImage+Add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Add.h"; sourceTree = "<group>"; };
+		55EB207C2020232900024166 /* UIImage+Add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Add.m"; sourceTree = "<group>"; };
 		AE123EE42010C742005EDCB0 /* UserCenterSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterSectionHeader.h; sourceTree = "<group>"; };
 		AE123EE52010C742005EDCB0 /* UserCenterSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterSectionHeader.m; sourceTree = "<group>"; };
 		AE2746A32017759B0035B952 /* SelectKindsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectKindsViewController.h; sourceTree = "<group>"; };
@@ -998,6 +1004,8 @@
 				55CF53EB200C70AA00732DC5 /* UITextField+Add.m */,
 				555EE5AC2016F88000F0015D /* UIButton+Add.h */,
 				555EE5AD2016F88000F0015D /* UIButton+Add.m */,
+				55EB207B2020232900024166 /* UIImage+Add.h */,
+				55EB207C2020232900024166 /* UIImage+Add.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1300,6 +1308,8 @@
 				557ACB60200D8F51009293FA /* ResetPswViewController.m */,
 				558E5E76201188D7009C6FF2 /* EditProfileViewController.h */,
 				558E5E77201188D7009C6FF2 /* EditProfileViewController.m */,
+				55EB20782020227300024166 /* DownloadViewController.h */,
+				55EB20792020227300024166 /* DownloadViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1590,6 +1600,7 @@
 				557ACBE6200DD855009293FA /* AppDelegate+Extension.m in Sources */,
 				5538D4262015E74D00920ABB /* MJRefreshAutoGifFooter.m in Sources */,
 				557ACBC9200DB078009293FA /* UIImage+MultiFormat.m in Sources */,
+				55EB207A2020227300024166 /* DownloadViewController.m in Sources */,
 				55C09CD81FFC9B6900A02194 /* main.m in Sources */,
 				55C09D2F1FFCB1EB00A02194 /* NewsViewModel.m in Sources */,
 				557ACBC7200DB078009293FA /* UIImage+ForceDecode.m in Sources */,
@@ -1623,6 +1634,7 @@
 				AEF619A620145DBC0079AC04 /* NSBundle+TZImagePicker.m in Sources */,
 				55CF53E9200C6DE300732DC5 /* RegisteViewController.m in Sources */,
 				557ACBD9200DB515009293FA /* FLAnimatedImageView.m in Sources */,
+				55EB207D2020232900024166 /* UIImage+Add.m in Sources */,
 				AEF619BA201465D20079AC04 /* PressView.m in Sources */,
 				55467DA5200F12EC009C0A1A /* Cash.m in Sources */,
 				55CF53DD200C496C00732DC5 /* IQUIWindow+Hierarchy.m in Sources */,

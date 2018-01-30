@@ -35,6 +35,8 @@
 	<string>应用希望访问您当前的位置</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>应用希望访问您当前的位置</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>应用希望访问您的相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>应用希望访问您的相册</string>
 	<key>UIRequiredDeviceCapabilities</key>
