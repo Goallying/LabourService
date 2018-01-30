@@ -11,6 +11,7 @@
 #import "UIPlaceholderTextView.h"
 #import "TagView.h"
 #import "SelectKindsViewController.h"
+#import "AreaPicker.h"
 @interface PressPersonViewController ()
 @property (nonatomic ,strong) UIScrollView * scrollView  ;
 @property (nonatomic ,strong)UIView * contentV  ;
@@ -20,6 +21,7 @@
 @property (nonatomic ,strong)UILabel * placeholder ;
 @property (nonatomic ,strong)TagView * tagView ;
 @property (nonatomic ,strong)NSArray * kinds  ;
+@property (nonatomic ,copy)NSString * selectedAreaCode ;
 @end
 
 @implementation PressPersonViewController
@@ -50,7 +52,8 @@
 - (void)press {
     
     [PressViewModel pressPersonToken:User_Info.token
-                         intro:_txtView.text addr:User_Info.formattedAddress addrID:User_Info.adcode
+                         intro:_txtView.text
+                                addr:User_Info.formattedAddress addrID:self.selectedAreaCode
                          kinds:_kinds
                        success:^(NSString *msg) {
     
@@ -59,6 +62,12 @@
         [CToast showWithText:msg];
     }];
     
+}
+- (void)locClick {
+    [AreaPicker pickerSelectfinish:^(Area *a1, Area *a2) {
+        _selectedAreaCode = a2.ID ;
+        [_locButton setTitle:a2.areaname forState:UIControlStateNormal];
+    }];
 }
 - (void)addKind {
     SelectKindsViewController * selectVC  = [SelectKindsViewController new];
@@ -82,7 +91,12 @@
     }];
     [self.navigationController pushViewController:selectVC animated:YES];
 }
-
+- (NSString *)selectedAreaCode{
+    if (!_selectedAreaCode) {
+        _selectedAreaCode = User_Info.adcode ;
+    }
+    return _selectedAreaCode ;
+}
 
 - (void)layoutSubviews {
     
@@ -109,6 +123,7 @@
     [_locButton setImage:[UIImage imageNamed:@"location_icon_green"] forState:UIControlStateNormal];
     [_locButton setTitle:User_Info.city?User_Info.city:@"" forState:UIControlStateNormal];
     [_locButton setImagePosition:ImagePositionLeft spacing:0];
+    [_locButton addTarget:self action:@selector(locClick) forControlEvents:UIControlEventTouchUpInside];
     [_contentV addSubview:_locButton];
     _locButton.maker.leftTo(locTitle, 10).centerYTo(locTitle, 0).widthGraterThan(44).heightEqualTo(30);
     //

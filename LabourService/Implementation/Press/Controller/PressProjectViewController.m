@@ -9,9 +9,9 @@
 #import "PressProjectViewController.h"
 #import "PressViewModel.h"
 #import "UIPlaceholderTextView.h"
-#import "TagView.h"
 #import "SelectKindsViewController.h"
 #import "KindWithNumCell.h"
+#import "AreaPicker.h"
 @interface PressProjectViewController ()<UITableViewDelegate ,UITableViewDataSource>
 @property (nonatomic ,strong) UIScrollView * scrollView  ;
 @property (nonatomic ,strong)UIView * contentV  ;
@@ -19,11 +19,11 @@
 @property (nonatomic ,strong)UIButton * locButton  ;
 @property (nonatomic ,strong)UITextView * txtView;
 @property (nonatomic ,strong)UILabel * placeholder ;
-//@property (nonatomic ,strong)TagView * tagView ;
 @property (nonatomic ,strong)NSArray * kinds  ;
 @property (nonatomic ,strong)UITableView * kindsTableView ;
-
 @property (nonatomic ,strong)UITextField * titleTF ;
+@property (nonatomic ,copy)NSString * selectedAreaCode ;
+
 @end
 
 @implementation PressProjectViewController
@@ -59,7 +59,7 @@
                                 title:_titleTF.text
                                 intro:_txtView.text
                                  addr:User_Info.formattedAddress
-                               addrID:User_Info.adcode
+                               addrID:self.selectedAreaCode
                                 kinds:_kinds success:^(NSString *msg) {
         [CToast showWithText:msg];
     } failure:^(NSString *msg, NSInteger code) {
@@ -69,6 +69,10 @@
 }
 -(void)locClick {
     
+    [AreaPicker pickerSelectfinish:^(Area *a1, Area *a2) {
+        _selectedAreaCode = a2.ID ;
+        [_locButton setTitle:a2.areaname forState:UIControlStateNormal];
+    }];
 }
 - (void)addKind {
     
@@ -92,6 +96,12 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     cell.kind = _kinds[indexPath.row];
     return cell ;
+}
+- (NSString *)selectedAreaCode{
+    if (!_selectedAreaCode) {
+        _selectedAreaCode = User_Info.adcode ;
+    }
+    return _selectedAreaCode ;
 }
 - (UITableView *)kindsTableView{
     if (!_kindsTableView) {
