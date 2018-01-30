@@ -57,6 +57,7 @@ UINavigationControllerDelegate>
                                   kinds:_sKinds
                                 success:^(NSString *msg, id obj) {
         [AppManager saveLocalUserInfo:obj];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_LOGIN_SUCCESS object:nil];
         [CToast showWithText:msg];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *msg, NSInteger code) {
