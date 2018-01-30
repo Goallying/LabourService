@@ -160,6 +160,9 @@
 		55CF5402200CAABD00732DC5 /* Ad_VdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF5401200CAABD00732DC5 /* Ad_VdCell.m */; };
 		55EB207A2020227300024166 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB20792020227300024166 /* DownloadViewController.m */; };
 		55EB207D2020232900024166 /* UIImage+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB207C2020232900024166 /* UIImage+Add.m */; };
+		55EB20812020521700024166 /* area.json in Resources */ = {isa = PBXBuildFile; fileRef = 55EB20802020521600024166 /* area.json */; };
+		55EB20842020526900024166 /* Area.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB20832020526900024166 /* Area.m */; };
+		55EB2087202052DC00024166 /* AreaPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB2086202052DC00024166 /* AreaPicker.m */; };
 		AE123EE62010C742005EDCB0 /* UserCenterSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = AE123EE52010C742005EDCB0 /* UserCenterSectionHeader.m */; };
 		AE2746A52017759B0035B952 /* SelectKindsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2746A42017759B0035B952 /* SelectKindsViewController.m */; };
 		AE2746A8201776430035B952 /* SideSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2746A7201776430035B952 /* SideSelectView.m */; };
@@ -492,6 +495,11 @@
 		55EB20792020227300024166 /* DownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
 		55EB207B2020232900024166 /* UIImage+Add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Add.h"; sourceTree = "<group>"; };
 		55EB207C2020232900024166 /* UIImage+Add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Add.m"; sourceTree = "<group>"; };
+		55EB20802020521600024166 /* area.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = area.json; sourceTree = "<group>"; };
+		55EB20822020526800024166 /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Area.h; sourceTree = "<group>"; };
+		55EB20832020526900024166 /* Area.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Area.m; sourceTree = "<group>"; };
+		55EB2085202052DC00024166 /* AreaPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaPicker.h; sourceTree = "<group>"; };
+		55EB2086202052DC00024166 /* AreaPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaPicker.m; sourceTree = "<group>"; };
 		AE123EE42010C742005EDCB0 /* UserCenterSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterSectionHeader.h; sourceTree = "<group>"; };
 		AE123EE52010C742005EDCB0 /* UserCenterSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterSectionHeader.m; sourceTree = "<group>"; };
 		AE2746A32017759B0035B952 /* SelectKindsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectKindsViewController.h; sourceTree = "<group>"; };
@@ -873,6 +881,8 @@
 		558E5E7920119EFE009C6FF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55EB2085202052DC00024166 /* AreaPicker.h */,
+				55EB2086202052DC00024166 /* AreaPicker.m */,
 				557ACBFD200DFDD3009293FA /* TagView.h */,
 				557ACBFE200DFDD3009293FA /* TagView.m */,
 				558753A0201EB1A400A7F14E /* SwitchView.h */,
@@ -1043,6 +1053,7 @@
 		55C09CE91FFCA18200A02194 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				55EB20802020521600024166 /* area.json */,
 				55C09CD11FFC9B6900A02194 /* Assets.xcassets */,
 				55C09CD61FFC9B6900A02194 /* Info.plist */,
 				55C09CD71FFC9B6900A02194 /* main.m */,
@@ -1369,6 +1380,8 @@
 		AE840E39200F8B040064A461 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				55EB20822020526800024166 /* Area.h */,
+				55EB20832020526900024166 /* Area.m */,
 				AE840E36200F8A3B0064A461 /* BannerModel.h */,
 				AE840E37200F8A3B0064A461 /* BannerModel.m */,
 				557ACC00200E0049009293FA /* SearchListModel.h */,
@@ -1513,6 +1526,7 @@
 				AEF619B4201460F50079AC04 /* TZImagePickerController.bundle in Resources */,
 				55C09D201FFCA6B100A02194 /* YYModel_README.md in Resources */,
 				5538D42F2015E74D00920ABB /* MJRefresh.bundle in Resources */,
+				55EB20812020521700024166 /* area.json in Resources */,
 				55C09CD21FFC9B6900A02194 /* Assets.xcassets in Resources */,
 				55CF53E6200C496C00732DC5 /* IQKeyboardManager.bundle in Resources */,
 				55C09D171FFCA6B000A02194 /* AFNetworking_README.md in Resources */,
@@ -1566,6 +1580,7 @@
 				AE2F8AD0201F7453006DA6C5 /* PressPersonViewController.m in Sources */,
 				5538D4332015E74D00920ABB /* UIScrollView+MJRefresh.m in Sources */,
 				557ACBBC200DB078009293FA /* SDWebImageCodersManager.m in Sources */,
+				55EB2087202052DC00024166 /* AreaPicker.m in Sources */,
 				55CF53E0200C496C00732DC5 /* IQTextView.m in Sources */,
 				557ACBD8200DB515009293FA /* FLAnimatedImage.m in Sources */,
 				55C09CF61FFCA67200A02194 /* BaseModel.m in Sources */,
@@ -1656,6 +1671,7 @@
 				5538D3F1201598AE00920ABB /* NewsTypeCollectionViewHeader.m in Sources */,
 				55B947322007305F00E3B760 /* AppointmentViewController.m in Sources */,
 				AEF619A720145DBC0079AC04 /* TZImageManager.m in Sources */,
+				55EB20842020526900024166 /* Area.m in Sources */,
 				5538D42E2015E74D00920ABB /* MJRefreshStateHeader.m in Sources */,
 				557ACC02200E0049009293FA /* SearchListModel.m in Sources */,
 				558753AA201EE4E100A7F14E /* MessageModel.m in Sources */,

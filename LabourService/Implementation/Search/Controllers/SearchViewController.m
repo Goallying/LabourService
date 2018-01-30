@@ -12,6 +12,7 @@
 #import "SelectKindsViewController.h"
 #import "SearchViewModel.h"
 #import "SearchCell.h"
+#import "AreaPicker.h"
 @interface SearchViewController ()<
 SDCycleScrollViewDelegate,
 UITableViewDelegate,
@@ -29,9 +30,9 @@ UITableViewDataSource
 @property (nonatomic ,assign)NSInteger page ;
 
 @property (nonatomic ,strong)UITextField * searchTF ;
-@property (nonatomic ,assign)BOOL allowEditing ;
-@property (nonatomic ,assign)BOOL beFirst ;
 @property (nonatomic ,strong)WorkKind * searchKind ;
+
+@property (nonatomic ,strong)NSString * selectedAreaCode ;
 @end
 
 @implementation SearchViewController
@@ -48,7 +49,6 @@ UITableViewDataSource
     [self.view addSubview:self.navigationView];
     
     _page = 1 ;
-    _beFirst = YES ;
     [self banner_data_request];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(banner_data_request) name:NOTICE_UPDATE_USER_INFO object:nil];
 }
@@ -56,7 +56,7 @@ UITableViewDataSource
     
     [_addressBtn setTitle:User_Info.city forState:UIControlStateNormal];
     [self bannerRequest];
-    [self dataRequest:Pull_Refresh page:_page kind:@""];
+    [self dataRequest:Pull_Refresh];
 }
 - (void)bannerRequest {
     
@@ -68,10 +68,13 @@ UITableViewDataSource
         [CToast showWithText:msg];
     }];
 }
-- (void)dataRequest:(PullType)pullType page:(NSInteger)page kind:(NSString *)kind{
+- (void)dataRequest:(PullType)pullType{
     
- 
-    [SearchViewModel getSearchList:_page parentid:User_Info.adcode parameter:kind success:^(NSString *msg, NSArray *peoples) {
+    NSString * kind = @"";
+    if (_searchKind) {
+        kind = [NSString stringWithFormat:@"%ld",_searchKind.ID] ;
+    }
+    [SearchViewModel getSearchList:_page parentid:self.selectedAreaCode parameter:kind success:^(NSString *msg, NSArray *peoples) {
         if (pullType == Pull_Refresh) {
             _people = [peoples mutableCopy];
         }else{
@@ -84,13 +87,10 @@ UITableViewDataSource
     }];
 }
 - (void)refresh {
-    _page = 1 ;
     
-    NSString * kind = @"";
-    if (_searchKind) {
-        kind = [NSString stringWithFormat:@"%ld",_searchKind.ID] ;
-    }
-    [self dataRequest:Pull_Refresh page:_page kind:kind];
+    _page = 1 ;
+  
+    [self dataRequest:Pull_Refresh];
 }
 - (void)more {
     _page ++ ;
@@ -98,19 +98,26 @@ UITableViewDataSource
     if (_searchKind) {
         kind = [NSString stringWithFormat:@"%ld",_searchKind.ID] ;
     }
-    [self dataRequest:Pull_More page:_page kind:kind];
+    [self dataRequest:Pull_More];
 }
 - (void)locClick {
     
+    [AreaPicker pickerSelectfinish:^(Area *a1, Area *a2) {
+//        NSLog(@"=== %@,====%@",a1.areaname,a2.areaname);
+        _selectedAreaCode = a2.ID ;
+        [_addressBtn setTitle:a2.areaname forState:UIControlStateNormal];
+        [self refresh];
+    }];
 }
 - (void)TFClick {
     SelectKindsViewController * kindVC = [SelectKindsViewController new];
     kindVC.maxSelectCount = 1 ;
     [kindVC setFinishSelect:^(NSArray *kinds) {
+        
         _searchKind = kinds.lastObject ;
         _searchTF.text = _searchKind.realName;
         _delete.hidden = NO ;
-        [self dataRequest:Pull_Refresh page:1 kind:[NSString stringWithFormat:@"%ld",_searchKind.ID]];
+        [self refresh];
     }];
     [self.navigationController pushViewController:kindVC animated:YES];
 }
@@ -118,7 +125,8 @@ UITableViewDataSource
     
     _delete.hidden = YES ;
     _searchTF.text = nil ;
-    [self dataRequest:Pull_Refresh page:_page kind:@""];
+    _searchKind = nil ;
+    [self refresh];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -151,7 +159,12 @@ UITableViewDataSource
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
-
+- (NSString *)selectedAreaCode{
+    if (!_selectedAreaCode) {
+        _selectedAreaCode = User_Info.adcode ;
+    }
+    return _selectedAreaCode ;
+}
 - (SDCycleScrollView *)sdCycleView{
     if (!_sdCycleView) {
         _sdCycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenW, 180) delegate:self placeholderImage:[UIImage imageNamed:@"defaule_banner"]];

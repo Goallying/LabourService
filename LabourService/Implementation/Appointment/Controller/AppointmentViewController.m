@@ -12,6 +12,7 @@
 #import "AppointmentViewModel.h"
 #import "AppointmentListCell.h"
 #import "SelectKindsViewController.h"
+#import "AreaPicker.h"
 @interface AppointmentViewController ()<
 SDCycleScrollViewDelegate,
 UITableViewDelegate,
@@ -29,10 +30,8 @@ UITableViewDataSource
 @property (nonatomic ,assign)NSInteger page ;
 
 @property (nonatomic ,strong)UITextField * searchTF ;
-@property (nonatomic ,assign)BOOL allowEditing ;
 @property (nonatomic ,strong)WorkKind * searchKind ;
-@property (nonatomic ,assign)BOOL beFirst ;
-
+@property (nonatomic ,copy)NSString * selectedAreaCode ;
 @end
 
 @implementation AppointmentViewController
@@ -48,7 +47,6 @@ UITableViewDataSource
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navigationView];
     
-    _beFirst = YES ;
     _page = 1 ;
     [self banner_data_request];
     
@@ -59,7 +57,7 @@ UITableViewDataSource
 - (void)banner_data_request {
     [_addressBtn setTitle:User_Info.city forState:UIControlStateNormal];
     [self bannerRequest];
-    [self dataRequest:Pull_Refresh page:_page kind:@""];
+    [self dataRequest:Pull_Refresh];
 }
 - (void)bannerRequest {
     
@@ -71,9 +69,13 @@ UITableViewDataSource
     }];
 
 }
-- (void)dataRequest:(PullType)pullType page:(NSInteger)page kind:(NSString *)kind{
+- (void)dataRequest:(PullType)pullType{
     
-    [AppointmentViewModel getAppointmentList:_page parentid:User_Info.adcode parameter:kind success:^(NSString *msg, NSArray *projects) {
+    NSString * kind = @"";
+    if (_searchKind) {
+        kind = [NSString stringWithFormat:@"%ld",_searchKind.ID] ;
+    }
+    [AppointmentViewModel getAppointmentList:_page parentid:self.selectedAreaCode parameter:kind success:^(NSString *msg, NSArray *projects) {
         if (pullType == Pull_Refresh) {
             _projects = [projects mutableCopy];
         }else if (pullType == Pull_More){
@@ -88,23 +90,20 @@ UITableViewDataSource
 }
 - (void)refresh {
     _page = 1 ;
-    
-    NSString * kind = @"";
-    if (_searchKind) {
-        kind = [NSString stringWithFormat:@"%ld",_searchKind.ID] ;
-    }
-    [self dataRequest:Pull_Refresh page:_page kind:kind];
+    [self dataRequest:Pull_Refresh];
 }
 - (void)more {
     _page ++ ;
-    NSString * kind = @"";
-    if (_searchKind) {
-        kind = [NSString stringWithFormat:@"%ld",_searchKind.ID] ;
-    }
-    [self dataRequest:Pull_More page:_page kind:kind];
+    [self dataRequest:Pull_More];
 }
 - (void)locClick {
     
+    [AreaPicker pickerSelectfinish:^(Area *a1, Area *a2) {
+        //        NSLog(@"=== %@,====%@",a1.areaname,a2.areaname);
+        _selectedAreaCode = a2.ID ;
+        [_addressBtn setTitle:a2.areaname forState:UIControlStateNormal];
+        [self refresh];
+    }];
 }
 - (void)TFClick {
     SelectKindsViewController * kindVC = [SelectKindsViewController new];
@@ -113,7 +112,7 @@ UITableViewDataSource
         _searchKind = kinds.lastObject ;
         _searchTF.text = _searchKind.realName;
         _delete.hidden = NO ;
-        [self dataRequest:Pull_Refresh page:1 kind:[NSString stringWithFormat:@"%ld",_searchKind.ID]];
+        [self dataRequest:Pull_Refresh];
     }];
     [self.navigationController pushViewController:kindVC animated:YES];
 }
@@ -121,7 +120,8 @@ UITableViewDataSource
     
     _delete.hidden = YES ;
     _searchTF.text = nil ;
-    [self dataRequest:Pull_Refresh page:_page kind:@""];
+    _searchKind = nil ;
+    [self dataRequest:Pull_Refresh];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -153,7 +153,12 @@ UITableViewDataSource
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
-
+- (NSString *)selectedAreaCode{
+    if (!_selectedAreaCode) {
+        _selectedAreaCode = User_Info.adcode ;
+    }
+    return _selectedAreaCode ;
+}
 - (SDCycleScrollView *)sdCycleView{
     if (!_sdCycleView) {
         _sdCycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenW, 180) delegate:self placeholderImage:[UIImage imageNamed:@"defaule_banner"]];
