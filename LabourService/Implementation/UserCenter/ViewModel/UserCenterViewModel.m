@@ -113,15 +113,11 @@
 }
 
 + (void)loginOut:(NSString *)token success:(void (^)(NSString *))success failure:(void (^)(NSString *, NSInteger))failure{
-    NSDictionary * dic = @{@"token":token};
     
-    [ReqManager POST_URLString:@"LoginApi/loginOut" parameters:dic showIndicatior:YES success:^(id obj) {
-        
-        NSLog(@"==== %@",obj);
-        
+    [ReqManager POST_URLString:@"LoginApi/loginOut" headerParamter:token parameters:nil showIndicatior:YES success:^(id obj) {
+        success(obj[@"message"]);
     } failure:^(NSError *error) {
-        NSLog(@"==== %@",error);
-
+        failure(error.domain ,error.code);
     }];
 }
 

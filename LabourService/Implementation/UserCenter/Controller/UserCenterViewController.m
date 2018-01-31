@@ -13,6 +13,7 @@
 #import "MessageViewController.h"
 #import "MyPressViewController.h"
 #import "DownloadViewController.h"
+#import "LoginViewController.h"
 @interface UserCenterViewController()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)UIButton * headerBtn ;
 @property (nonatomic ,strong)UILabel * nameLabel;
@@ -52,6 +53,19 @@
         _nameLabel.text = User_Info.userName ;
     [self userDataReq];
 }
+
+- (void)clearUserInfo{
+    
+    _balace = 0 ;
+    _thumbs = 0 ;
+    _mesCountLabel.text = nil ;
+    _mesCountLabel.hidden = YES ;
+    [_headerBtn sd_setBackgroundImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultHeader"]];
+    _nameLabel.text = nil ;
+    [AppManager saveLocalUserInfo:@{}];
+    [_tableView reloadData];
+    
+}
 - (void)userDataReq {
     
     [UserCenterViewModel getUserInfo:User_Info.token success:^(NSString *msg, NSString *balance, BOOL ifPerfect, NSInteger thumbs ,NSString * messageCount) {
@@ -66,7 +80,28 @@
     }];
 }
 - (void)headerClick {
-   
+    UIAlertController * alt = [UIAlertController alertControllerWithTitle:@"是否退出登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [UserCenterViewModel loginOut:User_Info.token success:^(NSString *msg) {
+            
+            [self clearUserInfo];
+            
+            LoginViewController * login = [LoginViewController new];
+            [self.navigationController pushViewController:login animated:YES];
+            
+            [CToast showWithText:msg];
+        } failure:^(NSString *msg, NSInteger code) {
+            [CToast showWithText:msg];
+        }];
+        
+    }];
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alt addAction:cancel];
+    [alt addAction:sure];
+    [self presentViewController:alt animated:YES completion:nil];
 }
 - (void)mesClick {
     MessageViewController * mes = [MessageViewController new];
