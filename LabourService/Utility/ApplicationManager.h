@@ -23,4 +23,5 @@
 @property (nonatomic ,strong)NSArray * userNewsTypes ;
 + (instancetype)manager ;
 - (void)saveLocalUserInfo:(id)obj ;
+- (void)clearUserInfo ;
 @end

@@ -68,9 +68,10 @@
     }
     [self save];
 }
-
-
-
+- (void)clearUserInfo{
+    _userInfo = [[UserInfo alloc]init];
+    [self save];
+}
 - (void)save {
     NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"userInfo"];
     [NSKeyedArchiver archiveRootObject:_userInfo toFile:file];

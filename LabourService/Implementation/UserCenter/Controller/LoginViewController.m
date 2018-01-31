@@ -44,7 +44,6 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_LOGIN_SUCCESS object:nil];
         
         [CToast showWithText:msg duration:1.5];
-//        UserInfo * info = AppManager.userInfo ;
         self.tabBarController.selectedIndex = 0;
         [self.navigationController popToRootViewControllerAnimated:NO];
         
@@ -69,7 +68,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)back {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (!User_Info.token) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 -(UIButton *)forgetPswBtn{
     if (!_forgetPswBtn) {

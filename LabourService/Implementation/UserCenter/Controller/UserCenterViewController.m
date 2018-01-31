@@ -62,7 +62,7 @@
     _mesCountLabel.hidden = YES ;
     [_headerBtn sd_setBackgroundImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultHeader"]];
     _nameLabel.text = nil ;
-    [AppManager saveLocalUserInfo:@{}];
+    [AppManager clearUserInfo];
     [_tableView reloadData];
     
 }
@@ -80,6 +80,14 @@
     }];
 }
 - (void)headerClick {
+    
+    NSLog(@"==== %@",User_Info.token);
+    if (!User_Info.token) {
+        LoginViewController * login = [LoginViewController new];
+        [self.navigationController pushViewController:login animated:YES];
+        return ;
+    }
+    
     UIAlertController * alt = [UIAlertController alertControllerWithTitle:@"是否退出登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
