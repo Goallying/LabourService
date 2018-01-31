@@ -7,23 +7,23 @@
 //
 
 #import "BaseH5ViewController.h"
-
-@interface BaseH5ViewController ()
+#import <AVKit/AVKit.h>
+@interface BaseH5ViewController ()<UIApplicationDelegate>
 @property(nonatomic,strong) UIWebView * webV ;
-
 @end
 
 @implementation BaseH5ViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO ;
     self.tabBarController.tabBar.hidden = YES;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.view addSubview:self.webV];
-    _webV.maker.topTo(self.view, 0).leftTo(self.view, 0).bottomTo(self.view,0).rightTo(self.view, 0);
+    _webV.maker.topTo(self.navigationBar, 0).leftTo(self.view, 0).bottomTo(self.view,0).rightTo(self.view, 0);
+
 }
 
 -(UIWebView *)webV{

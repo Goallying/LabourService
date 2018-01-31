@@ -72,21 +72,6 @@ SDCycleScrollViewDelegate>
         [CToast showWithText:msg];
     }];
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    NewsModel * newsModel = _news[indexPath.row];
-//    NSString * idr = nil ;
-//      if (newsModel.lb == NewsType_Picture_Article && newsModel.fileSize < 3) {
-//          idr = @"Single";
-//      }else if (newsModel.lb == NewsType_Picture_Article && newsModel.fileSize >= 3){
-//          idr = @"Several";
-//      }else{
-//          idr = @"Ad_Vd";
-//      }
-//    return [tableView fd_heightForCellWithIdentifier:idr configuration:^(id cell) {
-//        [cell performSelector:@selector(setNewsModel:) withObject:newsModel];
-//    }];
-//}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     return _news.count;

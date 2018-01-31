@@ -41,6 +41,7 @@
 		555EE5AB2016D8C100F0015D /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 555EE5A42016D8C100F0015D /* UITableView+FDIndexPathHeightCache.m */; };
 		555EE5AE2016F88000F0015D /* UIButton+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 555EE5AD2016F88000F0015D /* UIButton+Add.m */; };
 		555EE5B1201729D900F0015D /* UIPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 555EE5B0201729D900F0015D /* UIPlaceholderTextView.m */; };
+		5577BBF5202185130068D7E6 /* UIApplication+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5577BBF4202185130068D7E6 /* UIApplication+StatusBar.m */; };
 		557ACB61200D8F51009293FA /* ResetPswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 557ACB60200D8F51009293FA /* ResetPswViewController.m */; };
 		557ACBAD200DB078009293FA /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 557ACB67200DB077009293FA /* TAAbstractDotView.m */; };
 		557ACBAE200DB078009293FA /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 557ACB69200DB077009293FA /* TAAnimatedDotView.m */; };
@@ -262,6 +263,8 @@
 		555EE5AD2016F88000F0015D /* UIButton+Add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Add.m"; sourceTree = "<group>"; };
 		555EE5AF201729D900F0015D /* UIPlaceholderTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPlaceholderTextView.h; sourceTree = "<group>"; };
 		555EE5B0201729D900F0015D /* UIPlaceholderTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIPlaceholderTextView.m; sourceTree = "<group>"; };
+		5577BBF3202185130068D7E6 /* UIApplication+StatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+StatusBar.h"; sourceTree = "<group>"; };
+		5577BBF4202185130068D7E6 /* UIApplication+StatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+StatusBar.m"; sourceTree = "<group>"; };
 		557ACB5F200D8F51009293FA /* ResetPswViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPswViewController.h; sourceTree = "<group>"; };
 		557ACB60200D8F51009293FA /* ResetPswViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPswViewController.m; sourceTree = "<group>"; };
 		557ACB66200DB077009293FA /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -1016,6 +1019,8 @@
 				555EE5AD2016F88000F0015D /* UIButton+Add.m */,
 				55EB207B2020232900024166 /* UIImage+Add.h */,
 				55EB207C2020232900024166 /* UIImage+Add.m */,
+				5577BBF3202185130068D7E6 /* UIApplication+StatusBar.h */,
+				5577BBF4202185130068D7E6 /* UIApplication+StatusBar.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1614,6 +1619,7 @@
 				557ACBAE200DB078009293FA /* TAAnimatedDotView.m in Sources */,
 				557ACBE6200DD855009293FA /* AppDelegate+Extension.m in Sources */,
 				5538D4262015E74D00920ABB /* MJRefreshAutoGifFooter.m in Sources */,
+				5577BBF5202185130068D7E6 /* UIApplication+StatusBar.m in Sources */,
 				557ACBC9200DB078009293FA /* UIImage+MultiFormat.m in Sources */,
 				55EB207A2020227300024166 /* DownloadViewController.m in Sources */,
 				55C09CD81FFC9B6900A02194 /* main.m in Sources */,

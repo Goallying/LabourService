@@ -10,4 +10,5 @@
 
 @interface UIImage (Add)
 + (UIImage *)QRCodeImageWithString:(NSString *)string size:(CGFloat)size ;
+- (UIImage *)imageWithColor:(UIColor *)color ;
 @end

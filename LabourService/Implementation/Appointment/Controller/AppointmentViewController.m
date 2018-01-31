@@ -37,7 +37,7 @@ UITableViewDataSource
 @implementation AppointmentViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES ;
+    self.navigationBar.hidden = YES ;
     self.tabBarController.tabBar.hidden = NO ;
 }
 

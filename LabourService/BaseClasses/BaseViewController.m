@@ -11,10 +11,11 @@
 
 @interface BaseViewController ()
 
-@property  (nonatomic,strong)UILabel * emptyLabel  ;
+@property (nonatomic,strong)UIView * navigationBarView ;
+@property (nonatomic ,strong)UILabel * titleL  ;
+@property (nonatomic,strong)UILabel * emptyLabel  ;
 @property (nonatomic,strong) UIImageView * emptyImageView;
-
-
+@property (nonatomic ,strong)UIButton * goBackBtn ;
 @end
 
 @implementation BaseViewController
@@ -43,29 +44,70 @@
 #pragma mark -- NavigationBar Set
 - (void)setupNavigationBar {
     
-    self.navigationController.navigationBar.barTintColor = UIColor_0x007ed3;
-    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    self.navigationController.navigationBarHidden = YES ;
+    [self.view addSubview:self.navigationBarView];
+    _navigationBarView.maker.topTo(self.view, 0).leftTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(kScrTopMarginH);
+    
     if ([self respondsToSelector:@selector(setLeftBarButtonItems:)]) {
-        [self.navigationItem setLeftBarButtonItems:self.leftBarButtonItems];
+        for (NSInteger i = 0; i< self.leftBarButtonItems.count; i ++) {
+            UIButton * b = self.leftBarButtonItems[i];
+            b.frame = CGRectMake(16 + (24 + 10)* i, 32, 24, 24);
+            [_navigationBarView addSubview:b];
+        }
     }
     if ([self respondsToSelector:@selector(setRightBarButtonItems:)]) {
-        [self.navigationItem setRightBarButtonItems:self.rightBarButtonItems];
+        for (NSInteger i = 0; i< self.rightBarButtonItems.count; i ++) {
+            UIButton * b = self.rightBarButtonItems[i];
+            b.frame = CGRectMake(kScreenW - 16 - 24 - (10 + 24)* i, 32, 24, 24);
+            [_navigationBarView addSubview:b];
+        }
+    }
+    if ([self respondsToSelector:@selector(setTitleText:)]) {
+        self.titleL.text = self.titleText ;
     }
     if (!self.leftBarButtonItems || self.leftBarButtonItems.count == 0) {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_return_btn"] style:UIBarButtonItemStylePlain target:self action:@selector(backforward)];
-        [item setTintColor:[UIColor whiteColor]];
-        self.navigationItem.leftBarButtonItem = item ;
+        [_navigationBarView addSubview:self.goBackBtn];
+        _goBackBtn.maker.leftTo(_navigationBarView,16).widthEqualTo(24).heightEqualTo(19.5).topTo(_navigationBarView , 32);
     }
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:
-  @{NSFontAttributeName:[UIFont systemFontOfSize:18],
-    NSForegroundColorAttributeName:[UIColor whiteColor]}];
    
 }
 - (void)backforward {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (void)setNavigationBarHidden:(BOOL)navigationBarHidden{
+    self.navigationBarView.hidden = navigationBarHidden ;
+}
+- (UIView *)navigationBar{
+    return self.navigationBarView ;
+}
+- (void)setNavigationBarBackItemHidden:(BOOL)navigationBarBackItemHidden{
+    self.goBackBtn.hidden = navigationBarBackItemHidden;
+}
+-(UIButton *)goBackBtn{
+    if (!_goBackBtn) {
+        
+        _goBackBtn = [UIButton new];
+        [_goBackBtn addTarget:self action:@selector(backforward) forControlEvents:UIControlEventTouchUpInside];
+        UIImage * image = [[UIImage imageNamed:@"nav_return_btn"] imageWithColor:[UIColor whiteColor]];
+        [_goBackBtn setBackgroundImage:image forState:UIControlStateNormal];
+    }
+    return _goBackBtn ;
+}
+- (UIView *)navigationBarView{
+    
+    if (!_navigationBarView) {
+        _navigationBarView = [UIView new];
+        _navigationBarView.backgroundColor = UIColor_0x007ed3 ;
+        
+        _titleL = [UILabel new];
+        _titleL.textAlignment = NSTextAlignmentCenter;
+        _titleL.font = Font_18 ;
+        _titleL.textColor = [UIColor whiteColor];
+        [_navigationBarView addSubview:_titleL];
+        _titleL.maker.topTo(_navigationBarView, 32).centerXTo(_navigationBarView,0).widthGraterThan(44).heightEqualTo(19.5);
+    }
+     return _navigationBarView;
+} ;
 #pragma mark -
 #pragma mark -- EmptyView
 -(void)setupEmptyView{

@@ -19,27 +19,24 @@
 
 @implementation NewsViewController
 
-- (NSArray<UIBarButtonItem *> *)leftBarButtonItems{
-    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc]init];
-    return @[leftItem];
-}
-- (NSString *)title{
+- (NSString *)titleText{
     return @"首页";
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     self.tabBarController.tabBar.hidden = NO ;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationBarBackItemHidden = YES ;
     //数据请求完成才加载字视图
     [self newsTypeRequest:^{
         [self setPageController];
     }];
-    
 }
-
 - (void)newsTypeRequest:(void(^)(void))finish {
     
     if (AppManager.userNewsTypes && AppManager.userNewsTypes.count>0   ) {
@@ -61,7 +58,7 @@
     _pageController.delegate = self ;
     [self addChildViewController:_pageController];
     [self.view addSubview:_pageController.view];
-    _pageController.view.maker.sidesMarginZero();
+    _pageController.view.maker.topTo(self.navigationBar, 0).leftTo(self.view, 0).rightTo(self.view, 0).bottomTo(self.view, 0);
 }
 
 - (NSInteger)numberOfPagesInPageController:(CSPageController *)pageController{
@@ -91,5 +88,6 @@
     }];
     [self.navigationController pushViewController:customVC animated:YES];
 }
+
 
 @end

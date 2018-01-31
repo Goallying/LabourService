@@ -13,7 +13,6 @@
 }
 
 + (instancetype)pressView:(NSArray *)source didFinishPicker:(void (^)(NSInteger))finish{
-    
     return [[self alloc]initWithSource:source finish:finish];
 }
 - (instancetype)initWithSource:(NSArray *)source finish:(void (^)(NSInteger))finish{

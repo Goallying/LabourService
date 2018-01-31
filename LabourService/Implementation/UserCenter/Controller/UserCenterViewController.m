@@ -31,7 +31,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES ;
+    self.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = NO;
 }
 
@@ -40,9 +40,8 @@
     
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.mesBtn];
-    _mesBtn.maker.leftTo(self.view,16).widthEqualTo(24).heightEqualTo(24).topTo(self.view , 32);
+    _mesBtn.maker.leftTo(self.view,16).widthEqualTo(24).heightEqualTo(24).topTo(self.view, 32);
 
-    
     [self userDataReq];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadUserInfo) name:NOTICE_LOGIN_SUCCESS object:nil];

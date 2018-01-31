@@ -18,19 +18,18 @@
 
 @implementation SelectKindsViewController
 
-- (NSString *)title{
+- (NSString *)titleText{
     return @"工种选中";
 }
-- (NSArray<UIBarButtonItem *> *)rightBarButtonItems{
-    
-    UIBarButtonItem * barItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"correct_white"] style:UIBarButtonItemStylePlain target:self action:@selector(sure)];
-    barItem.tintColor = [UIColor whiteColor];
-    return @[barItem];
+- (NSArray<UIButton *> *)rightBarButtonItems{
+    UIButton * rightItem = [UIButton new];
+    [rightItem setBackgroundImage:[UIImage imageNamed:@"correct_white"] forState:UIControlStateNormal];
+    [rightItem addTarget:self action:@selector(sure) forControlEvents:UIControlEventTouchUpInside];
+    return @[rightItem];
     
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO ;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,7 +70,7 @@
     locTitle.font = Font_12 ;
     locTitle.textColor = UIColor_333333 ;
     [self.view addSubview:locTitle];
-    locTitle.maker.topTo(self.view, 10).leftTo(self.view, 16).widthGraterThan(44).heightEqualTo(20);
+    locTitle.maker.topTo(self.navigationBar, 10).leftTo(self.view, 16).widthGraterThan(44).heightEqualTo(20);
     
     _locButton = [UIButton new];
     [_locButton.titleLabel setFont:Font_12];

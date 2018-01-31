@@ -26,8 +26,8 @@
 @implementation LoginViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = YES ;
-    self.navigationController.navigationBarHidden = YES;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

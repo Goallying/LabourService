@@ -17,13 +17,16 @@ typedef NS_ENUM(NSInteger , PullType) {
 };
 @interface BaseViewController : UIViewController
 
-
+@property (nonatomic,strong ,readonly)UIView * navigationBar ;
+@property (nonatomic,assign)BOOL navigationBarHidden ;
+@property (nonatomic,assign)BOOL navigationBarBackItemHidden ;
+@property (nonatomic,copy)NSString * titleText ;
 @property (nonatomic ,assign)BOOL showEmptyView ;
 /**
  *NavigantionBar Set
  */
-@property  (nonatomic,strong) NSArray<UIBarButtonItem *> *leftBarButtonItems;
-@property  (nonatomic,strong) NSArray<UIBarButtonItem *> *rightBarButtonItems;
+@property  (nonatomic,strong) NSArray<UIButton *> *leftBarButtonItems;
+@property  (nonatomic,strong) NSArray<UIButton *> *rightBarButtonItems;
 
 // you can override this method.
 - (void)backforward ;

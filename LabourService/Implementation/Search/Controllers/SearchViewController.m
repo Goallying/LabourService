@@ -38,7 +38,7 @@ UITableViewDataSource
 @implementation SearchViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES ;
+    self.navigationBar.hidden = YES ;
     self.tabBarController.tabBar.hidden = NO ;
 }
 
@@ -52,6 +52,7 @@ UITableViewDataSource
     [self banner_data_request];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(banner_data_request) name:NOTICE_UPDATE_USER_INFO object:nil];
 }
+
 - (void)banner_data_request {
     
     [_addressBtn setTitle:User_Info.city forState:UIControlStateNormal];

@@ -25,12 +25,11 @@
 @end
 
 @implementation PressPersonViewController
-- (NSString *)title{
+- (NSString *)titleText{
     return @"人才发布";
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES ;
 }
 - (void)viewDidLoad {
@@ -103,12 +102,12 @@
     _scrollView = [[UIScrollView alloc]init];
     _scrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_scrollView];
-    _scrollView.maker.sidesMarginZero();
+    _scrollView.maker.topTo(self.navigationBar, 0).leftTo(self.view, 0).rightTo(self.view, 0).bottomTo(self.view, 0);
     
     _contentV = [UIView new];
 //    _contentV.backgroundColor = [UIColor redColor];
     [_scrollView addSubview:_contentV];
-    _contentV.maker.leftTo(_scrollView,0).rightTo(_scrollView, 0).widthEqualTo(kScreenW).heightEqualTo(kScreenH);
+    _contentV.maker.leftTo(_scrollView,0).rightTo(_scrollView, 0).widthEqualTo(kScreenW).heightEqualTo(kScreenH).topTo(_scrollView, 0);
     
     UILabel * locTitle = [[UILabel alloc]init];
     locTitle.text = @"当前定位";

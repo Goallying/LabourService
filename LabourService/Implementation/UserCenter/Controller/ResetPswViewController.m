@@ -19,13 +19,12 @@
 
 @implementation ResetPswViewController
 
-- (NSString *)title{
+- (NSString *)titleText{
     
     return @"修改密码";
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

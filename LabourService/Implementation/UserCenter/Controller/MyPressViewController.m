@@ -23,11 +23,10 @@
 @implementation MyPressViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO ;
     self.tabBarController.tabBar.hidden = YES ;
     
 }
-- (NSString *)title{
+- (NSString *)titleText{
     return @"我的发布";
 }
 - (void)viewDidLoad {
@@ -36,7 +35,7 @@
     
     [self.view addSubview:self.swithView];
     [self.view addSubview:self.tableView];
-    _swithView.maker.topTo(self.view, 0).leftTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50);
+    _swithView.maker.topTo(self.navigationBar, 0).leftTo(self.view, 0).rightTo(self.view, 0).heightEqualTo(50);
     _tableView.maker.topTo(_swithView, 0).leftTo(self.view, 0).rightTo(self.view, 0).bottomTo(self.view, 0);
     
     _page = 1 ;

@@ -18,10 +18,9 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO ;
     self.tabBarController.tabBar.hidden = YES;
 }
-- (NSString *)title{
+- (NSString *)titleText{
     return @"同城劳务下载";
 }
 - (void)viewDidLoad {
@@ -30,7 +29,7 @@
     [self.view addSubview:self.QRCodeImageView];
     [self.view addSubview:self.saveBtn];
     [self.view addSubview:self.shareBtn];
-    _QRCodeImageView.maker.topTo(self.view, 50).centerXTo(self.view, 0).widthEqualTo(200).heightEqualTo(200);
+    _QRCodeImageView.maker.topTo(self.navigationBar, 50).centerXTo(self.view, 0).widthEqualTo(200).heightEqualTo(200);
     _saveBtn.maker.centerXTo(self.view, 0).topTo(_QRCodeImageView, 20).widthEqualTo(200).heightEqualTo(40);
     _shareBtn.maker.centerXTo(self.view, 0).topTo(_saveBtn, 20).widthEqualTo(200).heightEqualTo(40);
 

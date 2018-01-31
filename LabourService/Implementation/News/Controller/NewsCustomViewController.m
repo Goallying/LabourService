@@ -25,19 +25,19 @@ UICollectionViewDelegateFlowLayout
 
 @implementation NewsCustomViewController
 
-- (NSString *)title{
+- (NSString *)titleText{
     return @"点击添加，拖动排序";
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
 }
-- (NSArray<UIBarButtonItem *> *)rightBarButtonItems{
+- (NSArray<UIButton *> *)rightBarButtonItems{
     
-    UIBarButtonItem * barItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"correct_white"] style:UIBarButtonItemStylePlain target:self action:@selector(finishAdd)];
-    barItem.tintColor = [UIColor whiteColor];
-    return @[barItem];
-    
+    UIButton * rightItem = [UIButton new];
+    [rightItem setBackgroundImage:[UIImage imageNamed:@"correct_white"] forState:UIControlStateNormal];
+    [rightItem addTarget:self action:@selector(finishAdd) forControlEvents:UIControlEventTouchUpInside];
+    return @[rightItem];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +45,7 @@ UICollectionViewDelegateFlowLayout
     [self getAllNewsTypes:^{
         
         [self.view addSubview:self.collectionView];
-        _collectionView.maker.topTo(self.view, 10).leftTo(self.view, 16).rightTo(self.view, 16).bottomTo(self.view, 0);
+        _collectionView.maker.topTo(self.navigationBar, 10).leftTo(self.view, 16).rightTo(self.view, 16).bottomTo(self.view, 0);
     }];
    
 }
