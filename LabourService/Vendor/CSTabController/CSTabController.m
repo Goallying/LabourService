@@ -27,10 +27,10 @@
 -(void)csTabBarCenterBtnClick:(CSTabBar *)bar{
     
     NSArray * source  = @[@{@"title":@"人才发布",
-                            @"image":@"login_weixin_icon"
+                            @"image":@"post_job_information_btn"
                             }
                           ,@{@"title":@"项目发布",
-                             @"image":@"login_zhifubao_icon"}];
+                             @"image":@"post_project_information_btn"}];
     [PressView pressView:source didFinishPicker:^(NSInteger PressType) {
         
             UINavigationController * nav =  self.selectedViewController ;

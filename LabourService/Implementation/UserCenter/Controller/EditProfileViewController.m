@@ -42,7 +42,7 @@ UINavigationControllerDelegate>
     [super viewDidLoad];
     
     [self layoutSubviews];
-    [self dataRequest];
+    [self cityDataRequest];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateUserInfo) name:NOTICE_UPDATE_USER_INFO object:nil];
 
@@ -66,9 +66,9 @@ UINavigationControllerDelegate>
 }
 - (void)updateUserInfo{
     [_areaBtn setTitle:User_Info.city forState:UIControlStateNormal];
-    [self dataRequest];
+    [self cityDataRequest];
 }
-- (void)dataRequest {
+- (void)cityDataRequest {
     
     if (User_Info.adcode.length < 2) {
         return;

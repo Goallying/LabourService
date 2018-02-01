@@ -10,7 +10,7 @@
 #import "SwitchView.h"
 #import "UserCenterViewModel.h"
 #import "MessageCell.h"
-#import "BaseH5ViewController.h"
+#import "SearchH5ViewController.h"
 @interface MessageViewController ()<UITableViewDelegate ,UITableViewDataSource>
 @property (nonatomic ,strong)SwitchView * swithView ;
 @property (nonatomic ,assign)NSInteger page ;
@@ -60,8 +60,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MessageModel * message = _messages[indexPath.row];
-    BaseH5ViewController * h5 = [[BaseH5ViewController alloc]init];
+    SearchH5ViewController * h5 = [[SearchH5ViewController alloc]init];
     h5.url = [NSString stringWithFormat:@"%@SysMessage/toMessageDetail?id=%@",BaseURL ,message.ID];
+    
     [self.navigationController pushViewController:h5 animated:YES];
 }
 - (void)getMessage:(NSInteger)status page:(NSInteger)page pullType:(PullType)type{

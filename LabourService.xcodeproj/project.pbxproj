@@ -135,6 +135,7 @@
 		55C09D241FFCA6EC00A02194 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C09D231FFCA6EC00A02194 /* RequestManager.m */; };
 		55C09D2F1FFCB1EB00A02194 /* NewsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C09D2E1FFCB1EB00A02194 /* NewsViewModel.m */; };
 		55C09D351FFCD04000A02194 /* NewsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C09D341FFCD04000A02194 /* NewsPageViewController.m */; };
+		55CB303A2022E74500EC3DDE /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB30392022E74500EC3DDE /* PayViewController.m */; };
 		55CF53B2200C48E000732DC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF53B1200C48E000732DC5 /* LoginViewController.m */; };
 		55CF53D8200C496C00732DC5 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF53B6200C496C00732DC5 /* IQNSArray+Sort.m */; };
 		55CF53D9200C496C00732DC5 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF53B8200C496C00732DC5 /* IQUIScrollView+Additions.m */; };
@@ -445,6 +446,8 @@
 		55C09D2E1FFCB1EB00A02194 /* NewsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewModel.m; sourceTree = "<group>"; };
 		55C09D331FFCD04000A02194 /* NewsPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsPageViewController.h; sourceTree = "<group>"; };
 		55C09D341FFCD04000A02194 /* NewsPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsPageViewController.m; sourceTree = "<group>"; };
+		55CB30382022E74500EC3DDE /* PayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		55CB30392022E74500EC3DDE /* PayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
 		55CF53B0200C48E000732DC5 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		55CF53B1200C48E000732DC5 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		55CF53B5200C496C00732DC5 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -1404,6 +1407,8 @@
 				55467DA1200EFCEF009C0A1A /* SearchH5ViewController.m */,
 				AE2746A32017759B0035B952 /* SelectKindsViewController.h */,
 				AE2746A42017759B0035B952 /* SelectKindsViewController.m */,
+				55CB30382022E74500EC3DDE /* PayViewController.h */,
+				55CB30392022E74500EC3DDE /* PayViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1679,6 +1684,7 @@
 				AEF619A720145DBC0079AC04 /* TZImageManager.m in Sources */,
 				55EB20842020526900024166 /* Area.m in Sources */,
 				5538D42E2015E74D00920ABB /* MJRefreshStateHeader.m in Sources */,
+				55CB303A2022E74500EC3DDE /* PayViewController.m in Sources */,
 				557ACC02200E0049009293FA /* SearchListModel.m in Sources */,
 				558753AA201EE4E100A7F14E /* MessageModel.m in Sources */,
 				55C09D1B1FFCA6B000A02194 /* AFURLResponseSerialization.m in Sources */,

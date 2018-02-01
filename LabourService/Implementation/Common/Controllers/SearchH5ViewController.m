@@ -9,6 +9,7 @@
 #import "SearchH5ViewController.h"
 #import "SearchViewModel.h"
 #import "AppointmentViewModel.h"
+#import "PayViewController.h"
 @interface SearchH5ViewController ()
 @property (nonatomic ,strong)UILabel * moneyLabel ;
 @end
@@ -44,7 +45,8 @@
 
 }
 - (void)phoneClick{
-    
+    PayViewController * pay = [PayViewController new];
+    [self.navigationController pushViewController:pay animated:YES];
 }
 
 - (void)contactClick {
