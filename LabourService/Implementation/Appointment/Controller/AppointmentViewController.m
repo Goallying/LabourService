@@ -32,6 +32,7 @@ UITableViewDataSource
 @property (nonatomic ,strong)UITextField * searchTF ;
 @property (nonatomic ,strong)WorkKind * searchKind ;
 @property (nonatomic ,copy)NSString * selectedAreaCode ;
+@property (nonatomic ,copy)NSString * selectedProvince ;
 @end
 
 @implementation AppointmentViewController
@@ -61,7 +62,7 @@ UITableViewDataSource
 }
 - (void)bannerRequest {
     
-    [AppointmentViewModel getAppointmentBanner:User_Info.province success:^(NSString *msg, NSArray *banners, NSArray *imageURLs) {
+    [AppointmentViewModel getAppointmentBanner:self.selectedProvince success:^(NSString *msg, NSArray *banners, NSArray *imageURLs) {
         _banners = [banners copy];
         _sdCycleView.imageURLStringsGroup = imageURLs;
     } failure:^(NSString *msg, NSInteger code) {
@@ -112,7 +113,9 @@ UITableViewDataSource
         _searchKind = kinds.lastObject ;
         _searchTF.text = _searchKind.realName;
         _delete.hidden = NO ;
-        [self dataRequest:Pull_Refresh];
+        [self bannerRequest];
+        [self refresh];
+        
     }];
     [self.navigationController pushViewController:kindVC animated:YES];
 }
@@ -152,6 +155,12 @@ UITableViewDataSource
         vc.url = banner.jumpUrl;
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+- (NSString *)selectedProvince{
+    if (!_selectedProvince) {
+        _selectedProvince = User_Info.province ;
+    }
+    return _selectedProvince ;
 }
 - (NSString *)selectedAreaCode{
     if (!_selectedAreaCode) {

@@ -32,7 +32,8 @@ UITableViewDataSource
 @property (nonatomic ,strong)UITextField * searchTF ;
 @property (nonatomic ,strong)WorkKind * searchKind ;
 
-@property (nonatomic ,strong)NSString * selectedAreaCode ;
+@property (nonatomic ,copy)NSString * selectedAreaCode ;
+@property (nonatomic ,copy)NSString * selectedProvince ;
 @end
 
 @implementation SearchViewController
@@ -62,7 +63,7 @@ UITableViewDataSource
 - (void)bannerRequest {
     
 
-    [SearchViewModel getSearchBanner:User_Info.province success:^(NSString *msg, NSArray *banners, NSArray *imageURLs) {
+    [SearchViewModel getSearchBanner:self.selectedProvince success:^(NSString *msg, NSArray *banners, NSArray *imageURLs) {
         _banners = [banners mutableCopy];
         _sdCycleView.imageURLStringsGroup = imageURLs;
     } failure:^(NSString *msg, NSInteger code) {
@@ -105,6 +106,7 @@ UITableViewDataSource
     
     [AreaPicker pickerSelectfinish:^(Area *a1, Area *a2) {
 //        NSLog(@"=== %@,====%@",a1.areaname,a2.areaname);
+        _selectedProvince = a1.areaname ;
         _selectedAreaCode = a2.ID ;
         [_addressBtn setTitle:a2.areaname forState:UIControlStateNormal];
         [self refresh];
@@ -119,6 +121,7 @@ UITableViewDataSource
         _searchTF.text = _searchKind.realName;
         _delete.hidden = NO ;
         [self refresh];
+        [self bannerRequest];
     }];
     [self.navigationController pushViewController:kindVC animated:YES];
 }
@@ -159,6 +162,12 @@ UITableViewDataSource
         vc.url = banner.jumpUrl;
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+- (NSString *)selectedProvince{
+    if (!_selectedProvince) {
+        _selectedProvince = User_Info.province ;
+    }
+    return _selectedProvince ;
 }
 - (NSString *)selectedAreaCode{
     if (!_selectedAreaCode) {
