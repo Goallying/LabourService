@@ -19,8 +19,7 @@
             success:(void(^)(NSString * msg))success
             failure:(void(^)(NSString * msg ,NSInteger code))failure; 
 //获取用户金额
-+ (void)getUserCash:(NSString *)token
-            success:(void(^)(NSString * msg ,Cash * cash))success
++ (void)getFeeSuccess:(void(^)(NSString * msg ,Cash * cash))success
             failure:(void(^)(NSString * msg ,NSInteger code))failure;
 //人才搜索页面Banner
 + (void)getSearchBanner:(NSString *)province

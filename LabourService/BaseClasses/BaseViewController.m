@@ -134,7 +134,7 @@
 -(UILabel *)emptyLabel {
     if (!_emptyLabel) {
         _emptyLabel = [[UILabel alloc]init];
-        _emptyLabel.text = @"此页面为空";
+        _emptyLabel.text = @"暂无数据";
         _emptyLabel.font = Font_15;
         _emptyLabel.textAlignment = NSTextAlignmentCenter ;
         _emptyLabel.textColor = [UIColor blackColor];

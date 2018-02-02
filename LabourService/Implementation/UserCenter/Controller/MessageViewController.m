@@ -62,7 +62,8 @@
     MessageModel * message = _messages[indexPath.row];
     SearchH5ViewController * h5 = [[SearchH5ViewController alloc]init];
     h5.url = [NSString stringWithFormat:@"%@SysMessage/toMessageDetail?id=%@",BaseURL ,message.ID];
-    
+    h5.showType = ShowType_Message ;
+    h5.hiddenBottomView = message.messageType != 3 ;
     [self.navigationController pushViewController:h5 animated:YES];
 }
 - (void)getMessage:(NSInteger)status page:(NSInteger)page pullType:(PullType)type{

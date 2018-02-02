@@ -28,8 +28,10 @@
     }];
     
 }
-+(void)getUserCash:(NSString *)token success:(void (^)(NSString *, Cash *))success failure:(void (^)(NSString *, NSInteger))failure{
-    [ReqManager POST_URLString:@"BaseDictionary/getPersonAmount" headerParamter:token parameters:nil showIndicatior:YES success:^(id obj) {
++ (void)getFeeSuccess:(void(^)(NSString * msg ,Cash * cash))success
+              failure:(void(^)(NSString * msg ,NSInteger code))failure{
+    
+    [ReqManager GET_URLString:@"BaseDictionary/getAmount" parameters:nil showIndicatior:YES success:^(id obj) {
         Cash * cash = [Cash yy_modelWithJSON:obj[@"result"]];
         success(obj[@"message"],cash);
     } failure:^(NSError *error) {

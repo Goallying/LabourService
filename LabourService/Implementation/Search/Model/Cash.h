@@ -9,6 +9,6 @@
 #import "BaseModel.h"
 
 @interface Cash : BaseModel
-@property (nonatomic ,copy)NSString *rmb ;
-@property (nonatomic ,copy)NSString *vc ;
+@property (nonatomic ,copy)NSString *rcRmb ;
+@property (nonatomic ,copy)NSString *proRmb ;
 @end
