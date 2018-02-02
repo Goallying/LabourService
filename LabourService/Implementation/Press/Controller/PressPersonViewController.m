@@ -57,6 +57,7 @@
                        success:^(NSString *msg) {
     
         [CToast showWithText:msg];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *msg, NSInteger code) {
         [CToast showWithText:msg];
     }];
