@@ -21,7 +21,7 @@
 
 @implementation RegisteViewController
 
--(NSString *)title{
+-(NSString *)titleText{
     return @"注册" ;
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -31,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.scrollView];
-    _scrollView.maker.sidesMarginZero();
+    _scrollView.maker.topTo(self.navigationBar, 0).leftTo(self.view, 0).rightTo(self.view, 0).bottomTo(self.view, 0);
 }
 
 

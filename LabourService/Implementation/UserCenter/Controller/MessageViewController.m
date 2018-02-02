@@ -41,6 +41,13 @@
     _page = 1 ;
     [self getMessage:0 page:_page pullType:Pull_Refresh];
 }
+-(void)backforward{
+    
+    if (self.backUpdate) {
+        self.backUpdate();
+    }
+    [super backforward];
+}
 - (void)refresh {
     _page = 1 ;
     [self getMessage:_option page:_page pullType:Pull_Refresh];

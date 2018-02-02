@@ -60,9 +60,9 @@
     _thumbs = 0 ;
     _mesCountLabel.text = nil ;
     _mesCountLabel.hidden = YES ;
-    [_headerBtn sd_setBackgroundImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultHeader"]];
     _nameLabel.text = nil ;
     [AppManager clearUserInfo];
+    [_headerBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:User_Info.headUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultHeader"]];
     [_tableView reloadData];
     
 }
@@ -113,6 +113,9 @@
 }
 - (void)mesClick {
     MessageViewController * mes = [MessageViewController new];
+    [mes setBackUpdate:^{
+        [self userDataReq];
+    }];
     [self.navigationController pushViewController:mes animated:YES];
     
 }

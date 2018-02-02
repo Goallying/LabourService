@@ -68,7 +68,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)back {
-    if (!User_Info.token) {
+    if (!User_Info.token || User_Info.token.length == 0) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
         [self.navigationController popViewControllerAnimated:YES];
