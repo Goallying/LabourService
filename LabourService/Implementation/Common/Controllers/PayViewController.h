@@ -8,9 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface PayCell :UITableViewCell
-
-@end
+//@interface PayCell :UITableViewCell
+//
+//@end
 
 @interface PayViewController : BaseViewController
 

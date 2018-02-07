@@ -12,7 +12,7 @@
 @property (nonatomic ,strong)UITableView * tableView ;
 @property (nonatomic ,strong)NSArray * dataSource ;
 @property (nonatomic ,strong)UIView * tableViewHeader ;
-@property (nonatomic ,strong)UILabel * titleL ;
+@property (nonatomic ,strong)UILabel * orderTitleL ;
 @property (nonatomic ,strong)UILabel * payL ;
 @property (nonatomic ,assign)NSInteger payIdx ;
 @end
@@ -21,6 +21,7 @@
 
 - (NSString *)titleText{
     return @"支付订单";
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -76,11 +77,11 @@
         [_tableViewHeader addSubview:titleT];
         titleT.maker.leftTo(_tableViewHeader, 16).topTo(_tableViewHeader, 16).widthEqualTo(64).heightEqualTo(20);
         
-        _titleL= [UILabel new];
-        _titleL.textColor = UIColor_333333 ;
-        _titleL.font = Font_14 ;
-        [_tableViewHeader addSubview:_titleL];
-        _titleL.maker.leftTo(titleT, 10).topTo(_tableViewHeader, 16).rightTo(_tableViewHeader, 16).heightEqualTo(20);
+        _orderTitleL= [UILabel new];
+        _orderTitleL.textColor = UIColor_333333 ;
+        _orderTitleL.font = Font_14 ;
+        [_tableViewHeader addSubview:_orderTitleL];
+        _orderTitleL.maker.leftTo(titleT, 10).topTo(_tableViewHeader, 16).rightTo(_tableViewHeader, 16).heightEqualTo(20);
         
         UILabel * payT = [UILabel new];
         payT.text = @"订单金额:";
@@ -93,7 +94,7 @@
         _payL.textColor = [UIColor redColor] ;
         _payL.font = Font_14 ;
         [_tableViewHeader addSubview:_payL];
-        _payL.maker.leftTo(payT, 10).topTo(_titleL, 16).rightTo(_tableViewHeader, 16).heightEqualTo(20);
+        _payL.maker.leftTo(payT, 10).topTo(_orderTitleL, 16).rightTo(_tableViewHeader, 16).heightEqualTo(20);
     }
     return _tableViewHeader ;
 }
@@ -120,14 +121,15 @@
 
 @end
 //-------- cell --------
-@interface PayCell()
-//@property (nonatomic ,strong)UIImageView <#      #> ;
-@end
-@implementation PayCell :UITableViewCell
-//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-//
-//    }
-//    return  self ;
-//}
-@end
+//@interface PayCell()
+////@property (nonatomic ,strong)UIImageView <#      #> ;
+//@end
+//@implementation PayCell :UITableViewCell
+////- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+////    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+////
+////    }
+////    return  self ;
+////}
+//@end
+
