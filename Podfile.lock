@@ -1,0 +1,23 @@
+PODS:
+  - MJRefresh (3.1.15.3)
+  - ReactiveCocoa (2.1.8):
+    - ReactiveCocoa/Core (= 2.1.8)
+    - ReactiveCocoa/no-arc (= 2.1.8)
+  - ReactiveCocoa/Core (2.1.8):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.1.8)
+  - TZImagePickerController (2.0.0.9)
+
+DEPENDENCIES:
+  - MJRefresh (= 3.1.15.3)
+  - ReactiveCocoa (~> 2.1.0)
+  - TZImagePickerController (= 2.0.0.9)
+
+SPEC CHECKSUMS:
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
+  TZImagePickerController: 9bf89512bb6de53e87897f2e17e607c126a199d6
+
+PODFILE CHECKSUM: 7bf5bc7f8397e61425625cf77ff048e0d3687c01
+
+COCOAPODS: 1.4.0

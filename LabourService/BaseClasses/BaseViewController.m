@@ -28,7 +28,9 @@
     [self setupEmptyView];
     
     //接收登录通知
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(needLogin) name:NOTICE_TO_LOGIN object:nil];
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NOTICE_TO_LOGIN object:nil] subscribeNext:^(id x) {
+        [self needLogin];
+    }];
 }
 
 - (void)needLogin {

@@ -10,7 +10,6 @@
 #import "CSTabController.h"
 #import "CToast.h"
 #import "MJRefresh.h"
-#import "UITableView+FDTemplateLayoutCell.h"
 typedef NS_ENUM(NSInteger , PullType) {
     Pull_Refresh,
     Pull_More 

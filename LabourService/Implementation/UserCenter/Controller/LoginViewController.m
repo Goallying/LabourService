@@ -38,6 +38,17 @@
 
 - (void)loginClick {
     
+    [[RACSignal combineLatest:@[_userNameTF.rac_textSignal ,_pswTF.rac_textSignal] reduce:^id (NSString * acount ,NSString * psw){
+        return @(acount.length && psw.length);
+    }] subscribeNext:^(NSNumber * x) {
+        if ([x boolValue]) {
+            [self login];
+        }
+    }];
+    
+   
+}
+- (void)login {
     [UserCenterViewModel login:_userNameTF.text psw:_pswTF.text success:^(NSString *msg , id obj) {
         
         [AppManager saveLocalUserInfo:obj];
@@ -68,6 +79,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)back {
+    
     if (!User_Info.token || User_Info.token.length == 0) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
